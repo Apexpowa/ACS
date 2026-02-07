@@ -11,6 +11,7 @@ A next-generation private server emulator alternative to UCS, written in JavaScr
 3. Go into Command Prompt or Terminal and type `node .` to start the server.
 4. Now it is finished and you can use the Apexpowa client linked in the releases to connect to your server.
 
+## Screenshots
 ![screenshot](/Screens/game.png)
 
 ## Credits
