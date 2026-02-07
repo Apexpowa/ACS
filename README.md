@@ -71,5 +71,4 @@ After starting the server, use the **Apexpowa client** available in the **Releas
 
 ## Disclaimer
 
-This project is created for **educational and research purposes only**.  
-It is not affiliated with, endorsed by, or connected to Supercell.
+This repository contains the source code of Apexpowa Clash Server, a JavaScript-based server emulator for the famous game Clash of Clans. ACS is not affiliated with Supercell.
