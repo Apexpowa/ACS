@@ -16,9 +16,9 @@
 ---
 
 ## Features
-- JavaScript-based server
-- Easy to modify
-- Lightweight
+-- Saving villages
+-- Buildings, defences, traps, decorations, etc
+-- Creating clans
 
 ---
 
