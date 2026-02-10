@@ -5,7 +5,7 @@
         <img src="Images/logo.png" alt="Logo" width="150">
       </td>
       <td>
-        <h1 style="margin: 0; font-size: 32px;">Apexpowa Clash Server (ACS)</h1>
+        <h1 style="margin: 0; font-size: 32px;">Apexpowa Clash Server (ACS) - <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="GPLv3 License"></a></h1>
         <strong>The best 2026 Clash of Clans private server emulator made for you!</strong><br>
         > A next-generation private server emulator written in JavaScript.</p>
       </td>
@@ -76,6 +76,6 @@ After starting the server, use the **Apexpowa client** available in the **Releas
 
 ## Disclaimer
 
-Apexpowa's resources and programs are protected under the GPL-3.0 license. Apexpowa's resources and programs are created by the (Apexpowa) team.
-Apexpowa is NOT affiliated with 'Supercell, Oy'.
-Apexpowa does NOT own 'Clash of Clans', 'Boom Beach', 'Clash Royale', and/or 'Hay Day'.
+**Apexpowa**'s resources and programs are protected under the GPL-3.0 license. **Apexpowa**'s resources and programs are created by the (**Apexpowa**) team.
+**Apexpowa** is **NOT** affiliated with 'Supercell, Oy'.
+**Apexpowa** does **NOT** own 'Clash of Clans', 'Boom Beach', 'Clash Royale', and/or 'Hay Day'.
