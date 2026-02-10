@@ -6,8 +6,8 @@
       </td>
       <td>
         <h1 style="margin: 0; font-size: 32px;">Apexpowa Clash Server (ACS)</h1>
-        <strong>Ultrapowa Clash Server (UCS) Alternative</strong><br>
-        > A next-generation private server emulator alternative to UCS, written in JavaScript.</p>
+        <strong>The best 2026 Clash of Clans private server emulator made for you!</strong><br>
+        > A next-generation private server emulator written in JavaScript.</p>
       </td>
     </tr>
   </table>
