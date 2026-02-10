@@ -1,0 +1,24 @@
+{
+    "Server": {
+        "Port": 9339,
+        "RC4Key": "fhsd6f86f67rt8fw78fw789we78r9789wer6re",
+        "Debug": true
+    },
+    "Database": {
+        "Host": "127.0.0.1",
+        "Name": "MagicDatabase",
+        "Password": null
+    },
+    "Player": {
+        "StartDefault": false,
+        "StartingScore": 0,
+        "StartingLevel": 1,
+        "StartingExperience": 0,
+        "StartingResources": {
+            "Gold": 1000000000,
+            "Mana": 1000000000,
+            "DarkMana": 1000000000,
+            "Diamonds": 1000000000
+        }
+    }
+}

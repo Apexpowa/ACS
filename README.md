@@ -17,8 +17,7 @@
 
 ## Features
 - Saving villages
-- Buildings, defences, traps, decorations, etc
-- Creating clans
+- Buildings, defences, decorations, etc
 
 ---
 
