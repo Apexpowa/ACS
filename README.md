@@ -7,7 +7,7 @@
       <td>
         <h1 style="margin: 0; font-size: 32px;">Apexpowa Clash Server (ACS) - <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="GPLv3 License"></a></h1>
         <strong>The best 2026 Clash of Clans private server emulator made for you!</strong><br>
-        > A next-generation private server emulator written in JavaScript.</p>
+        > A next-generation Clash of Clans private server emulator written in JavaScript.</p>
       </td>
     </tr>
   </table>
