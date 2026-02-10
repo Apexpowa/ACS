@@ -74,7 +74,9 @@ class ClientAvatar {
     self.writeInt(0) //array 8, hero health slot
     self.writeInt(0) //array 9, hero state slot
     self.writeInt(0) //array 10, alliance unit data
-    self.client.player.tutorialSteps = 10
+    if (self.client.player.tutorialSteps != 35) {
+      self.client.player.tutorialSteps = 10
+    }
     self.client.player.nameChangesCount == 0 ? self.client.player.nameChangesCount : 35
     self.writeInt(self.client.player.tutorialSteps) //array 11, tutorial steps data
     {
