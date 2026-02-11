@@ -17,18 +17,32 @@ class LogicStartUnlockingBuildingCommand {
 
     village = JSON.parse(village)
 
-    if (!Array.isArray(village.building)) {
-      village.building = []
+    if (!Array.isArray(village.buildings)) {
+      village.buildings = []
     }
 
     const building = {
       data: this.data.BuildingID,
+      lvl: 0,
       x: this.data.PositionX,
       y: this.data.PositionY
     }
-    village.decos.push(building)
+    village.buildings.push(building)
 
     self.client.log(`Placed building ${building.data} at x${building.x}, y${building.y}`)
+
+    if (this.data.BuildingID === 1000022) {
+      if (self.client.player.heroes === 0) {
+        self.client.player.heroes = 1
+        self.client.player.markModified('heroes')
+      }
+    }
+    else if (this.data.BuildingID === 1000025) {
+      if (self.client.player.heroes === 1) {
+        self.client.player.heroes = 2
+        self.client.player.markModified('heroes')
+      }
+    }
 
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')

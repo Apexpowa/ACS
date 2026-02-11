@@ -4,6 +4,7 @@ const config = require('../../../config.json')
 const LogicStartUnlockingBuildingCommand = require('../../Commands/Client/LogicStartUnlockingBuildingCommand')
 const LogicUpgradeBuildingCommand = require('../../Commands/Client/LogicUpgradeBuildingCommand')
 const LogicBuyBuildingCommand = require('../../Commands/Client/LogicBuyBuildingCommand')
+const LogicBuyTrapCommand = require('../../Commands/Client/LogicBuyTrapCommand')
 const LogicBuyDecoCommand = require('../../Commands/Client/LogicBuyDecoCommand')
 const LogicUnlockBuildingCommand = require('../../Commands/Client/LogicUnlockBuildingCommand')
 const LogicPlaceAttackerCommand = require('../../Commands/Client/LogicPlaceAttackerCommand')
@@ -35,6 +36,7 @@ class EndClientTurnMessage extends PiranhaMessage {
       500: LogicStartUnlockingBuildingCommand,
       502: LogicUpgradeBuildingCommand,
       504: LogicBuyBuildingCommand,
+      510: LogicBuyTrapCommand,
       512: LogicBuyDecoCommand,
       520: LogicUnlockBuildingCommand,
       600: LogicPlaceAttackerCommand,
