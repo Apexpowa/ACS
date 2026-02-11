@@ -70,9 +70,81 @@ class ClientAvatar {
     self.writeInt(0) //array 4, spell slot data
     self.writeInt(0) //array 5, unit upgrade slot
     self.writeInt(0) //array 6, spell upgrade slot
-    self.writeInt(0) //array 7, hero upgrade slot
-    self.writeInt(0) //array 8, hero health slot
-    self.writeInt(0) //array 9, hero state slot
+    self.writeInt(self.client.player.heroes) //array 7, hero upgrade slot
+    {
+      if (self.client.player.heroes === 1) {
+        village.buildings.forEach(b => {
+          if (b.data === 1000022) { // BK
+            self.writeInt(28000000) // ID
+            self.writeInt(b.data.lvl) // Level
+          }
+        })
+      }
+      else if (self.client.player.heroes === 2) {
+        village.buildings.forEach(b => {
+          if (b.data === 1000022) { // BK
+            self.writeInt(28000000) // ID
+            self.writeInt(b.data.lvl) // Level
+          }
+        })
+        village.buildings.forEach(b => {
+          if (b.data === 1000025) { // Q
+            self.writeInt(28000001) // ID
+            self.writeInt(b.data.lvl) // Level
+          }
+        })
+      }
+    }
+    self.writeInt(self.client.player.heroes) //array 8, hero health slot
+    {
+      if (self.client.player.heroes === 1) {
+        village.buildings.forEach(b => {
+          if (b.data === 1000022) { // BK
+            self.writeInt(28000000) // ID
+            self.writeInt(0)
+          }
+        })
+      }
+      else if (self.client.player.heroes === 2) {
+        village.buildings.forEach(b => {
+          if (b.data === 1000022) { // BK
+            self.writeInt(28000000) // ID
+            self.writeInt(0)
+          }
+        })
+        village.buildings.forEach(b => {
+          if (b.data === 1000025) { // AQ
+            self.writeInt(28000001) // ID
+            self.writeInt(0)
+          }
+        })
+      }
+    }
+    self.writeInt(self.client.player.heroes) //array 9, hero state slot
+    {
+      if (self.client.player.heroes === 1) {
+        village.buildings.forEach(b => {
+          if (b.data === 1000022) { // BK
+            self.writeInt(28000000) // ID
+            self.writeInt(3) // 2 = Sleep, 3 = Guard
+          }
+        })
+      }
+      else if (self.client.player.heroes === 2) {
+        village.buildings.forEach(b => {
+          if (b.data === 1000022) { // BK
+            self.writeInt(28000000) // ID
+            self.writeInt(3) // 2 = Sleep, 3 = Guard
+          }
+        })
+        village.buildings.forEach(b => {
+          if (b.data === 1000025) { // AQ
+            self.writeInt(28000001) // ID
+            self.writeInt(3) // 2 = Sleep, 3 = Guard
+          }
+        })
+      }
+    }
     self.writeInt(0) //array 10, alliance unit data
     if (self.client.player.tutorialSteps != 35) {
       self.client.player.tutorialSteps = 10
