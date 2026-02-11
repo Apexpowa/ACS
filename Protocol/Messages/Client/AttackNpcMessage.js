@@ -9,10 +9,16 @@ class AttackNpcMessage extends PiranhaMessage {
     this.version = 1
   }
 
-  async decode () {}
+  async decode () {
+    this.data = {}
+
+    this.data.LevelID = this.readInt()
+
+    console.log(this.data)
+  }
 
   async process () {
-    await new NpcDataMessage(this.client).send()
+    await new NpcDataMessage(this.client, this.data.LevelID).send()
   }
 }
 
