@@ -128,6 +128,10 @@ const playersSchema = new Schema({
         type: Number,
         default: 0
     },
+    heroes: {
+        type: Number,
+        default: 0
+    },
     inClan: {
         type: Number,
         default: 0
@@ -140,18 +144,6 @@ const playersSchema = new Schema({
         ClanLowID: {
             type: Number,
             default: 1
-        },
-        ClanName: {
-            type: String,
-            default: 'Clashers'
-        },
-        ClanBadge: {
-            type: Number,
-            default: 13000000
-        },
-        ClanRole: {
-            type: Number,
-            default: 0
         }
     }
 })

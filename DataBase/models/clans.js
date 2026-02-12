@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 //Creating schema
 const clansSchema = new Schema({
-    highID:{
+    highID: {
         type: Number,
         required: true
     },
-    lowID:{
+    lowID: {
         type: Number,
         required: true
     },
@@ -19,19 +19,31 @@ const clansSchema = new Schema({
         type: String,
         required: true
     },
-    trophies:{
+    trophies: {
         type: Number,
         default: 0
     },
-    requiredTrophies:{
+    requiredTrophies: {
         type: Number,
         default: 0
     },
-    avatarID:{
+    type: {
         type: Number,
         default: 0
     },
-    type:{
+    badge: {
+        type: Number,
+        default: 13000000
+    },
+    level: {
+        type: Number,
+        default: 1
+    },
+    warFrequency: {
+        type: Number,
+        default: 0
+    },
+    origin: {
         type: Number,
         default: 0
     },

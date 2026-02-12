@@ -79,47 +79,6 @@ server.on('connection', async (client) => {
   })
 })
 
-/*function checkPort(port) {
-  if (port != 0) {
-    try {
-      const platform = os.platform()
-
-      if (platform === 'win32') { // Windows
-        const cmd = `netstat -ano | findstr :${port}`
-        const output = execSync(cmd).toString()
-
-        if (output) {
-          const lines = output.trim().split('\n')
-          lines.forEach(line => {
-            const parts = line.trim().split(/\s+/)
-            const pid = parts[parts.length - 1]
-            if (pid) {
-              try {
-                //console.log(`[SERVER]    Port ${port} is in use. Killing PID ${pid}...`)
-                execSync(`taskkill /PID ${pid} /F`)
-              } catch (err) {}
-            }
-          })
-        }
-      } else { // Linux or macOS
-        const cmd = `lsof -i :${port} -t`
-        const output = execSync(cmd, { stdio: ['pipe', 'pipe', 'ignore'] }).toString().trim()
-        if (output) {
-          const pids = output.split('\n')
-          pids.forEach(pid => {
-            if (pid) {
-              try {
-                  //console.log(`[SERVER]    Port ${port} is in use. Killing PID ${pid}...`)
-                  execSync(`kill -9 ${pid}`)
-              } catch (err) {}
-            }
-          })
-        }
-      }
-    } catch (err) {}
-  }
-}*/
-
 console.log(figlet.textSync('ACS', {font: 'Bloody'}))
 console.log("This program is made by the Apexpowa team.")
 console.log(`You can find the source at https://github.com/Apexpowa/ACS !`)
@@ -128,7 +87,6 @@ console.log()
 console.log("ACS 6.253 is now starting...")
 mongooseInstance.connect(isSuccess => {
   if (isSuccess) {
-    //checkPort(PORT)
     server.once('listening', () => {
         console.log(`Gateway started on port ${PORT}!`)
         console.log(`Server started successfully, Let's play Clash of Clans!`)

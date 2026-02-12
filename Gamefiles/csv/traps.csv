@@ -1,0 +1,4 @@
+"Name","TID","InfoTID","SWF","ExportName","Damage","DamageRadius","TriggerRadius","Width","Height","Effect","DamageEffect","Passable","BuildResource","BuildCost","EjectVictims","EjectHousingLimit","ExportNameTriggered","ActionFrame","PickUpEffect","PlacingEffect"
+"String","String","String","String","String","int","int","int","int","int","String","String","boolean","String","int","boolean","int","String","int","String","String"
+"Mine","TID_TRAP_MINE","TID_TRAP_MINE_INFO","sc/buildings.sc","bomp_trap_lvl1_setup",12,300,150,1,1,"Bomb Exposion","Generic Hit","true","Gold",400,"false",0,"bomp_trap_lvl1",48,"Generic Pick Up","Generic Placing"
+"Ejector","TID_TRAP_EJECTOR","TID_TRAP_EJECTOR_INFO","sc/buildings.sc","eject_trap_lvl1_setup",1000,0,70,1,1,"Trap Eject","Generic Hit","true","Gold",2000,"true",15,"eject_trap_lvl1",10,"Generic Pick Up","Generic Placing"

@@ -1,0 +1,23 @@
+"Name","TID","SWF","ExportName","ExportNameBase","ClearTimeSeconds","Width","Height","Resource","Passable","ClearResource","ClearCost","LootResource","LootCount","ClearEffect","PickUpEffect","RespawnWeight"
+"String","String","String","String","String","int","int","int","String","boolean","String","int","String","int","String","String","int"
+"Pine Tree","TID_OBSTACLE_TREE","sc/buildings.sc","env_pinetree_1","pine_tree2_base",45,2,2,"Gold","false","Gold",1000,"Diamonds",1,,"Tree Pickup",1
+"Large Stone","TID_OBSTACLE_STONE","sc/buildings.sc","env_large_stone","large_stone2_base",120,3,3,"Gold","false","Gold",10000,"Diamonds",1,,"Stone Pickup",1
+"Small Stone 1","TID_OBSTACLE_STONE","sc/buildings.sc","env_small_stone_a","small_stone_a_base",10,2,2,"Gold","false","Gold",50,"Diamonds",1,,"Stone Pickup",1
+"Small Stone 2","TID_OBSTACLE_STONE","sc/buildings.sc","env_small_stone_b","small_stone_a_base",10,2,2,"Gold","false","Gold",50,"Diamonds",1,,"Stone Pickup",1
+"Square Bush","TID_OBSTACLE_BUSH","sc/buildings.sc","env_square_bush_a","square_bush_a_base",30,2,2,"Elixir","false","Gold",200,"Diamonds",1,,"Bush Pickup",1
+"Square Tree","TID_OBSTACLE_TREE","sc/buildings.sc","env_square_tree_a","square_tree_a_base",60,3,3,"Elixir","false","Gold",5000,"Diamonds",1,,"Tree Pickup",1
+"Tree Trunk 1","TID_OBSTACLE_TRUNK","sc/buildings.sc","env_treetrunk_a","tree_trunk_a_base",30,2,2,"Elixir","false","Gold",100,"Diamonds",1,,"Tree Pickup",1
+"Tree Trunk 2","TID_OBSTACLE_TRUNK","sc/buildings.sc","env_treetrunk_b","tree_trunk_a_base",30,2,2,"Elixir","false","Gold",100,"Diamonds",1,,"Tree Pickup",1
+"Mushrooms","TID_OBSTACLE_MUSHROOM","sc/buildings.sc","env_mushrooms","mushrooms_base",30,2,2,"Elixir","false","Gold",100,"Diamonds",1,,"Flower Pickup",1
+"TombStone","TID_OBSTACLE_TOMBSTONE","sc/buildings.sc","tombstone",,0,1,1,"Gold","true","Gold",0,"Elixir",20,"Clear Tombstone","Stone Pickup",0
+"Fallen Tree","TID_OBSTACLE_TRUNK","sc/buildings.sc","env_fallen_tree","fallen_tree2_base",30,2,2,"Gold","false","Gold",500,"Diamonds",1,,"Tree Pickup",1
+"Small Stone 3","TID_OBSTACLE_STONE","sc/buildings.sc","env_small_stone_c","small_stone_c_base",10,2,2,"Gold","false","Gold",300,"Diamonds",1,,"Stone Pickup",1
+"Small Stone 4","TID_OBSTACLE_STONE","sc/buildings.sc","env_small_stone_d","small_stone_c_base",10,2,2,"Gold","false","Gold",300,"Diamonds",1,,"Stone Pickup",1
+"Square Tree 2","TID_OBSTACLE_TREE","sc/buildings.sc","env_square_tree_b","square_tree_a_base",60,3,3,"Gold","false","Gold",6000,"Diamonds",1,,"Tree Pickup",1
+"Stone Pillar 1","TID_OBSTACLE_STONE","sc/buildings.sc","env_stonepillar_a","small_stone_a_base",30,2,2,"Gold","false","Gold",7500,"Diamonds",1,,"Stone Pickup",1
+"Large Stone","TID_OBSTACLE_STONE","sc/buildings.sc","env_large_stone_b","large_stone_b_base",120,3,3,"Gold","false","Gold",10000,"Diamonds",1,,"Stone Pickup",1
+"Sharp Stone 1","TID_OBSTACLE_STONE","sc/buildings.sc","env_sharpstone_1","env_sharpstone_1_base",10,2,2,"Gold","false","Gold",1000,,1,,"Stone Pickup",0
+"Sharp Stone 2","TID_OBSTACLE_STONE","sc/buildings.sc","env_sharpstone_2","env_sharpstone_2_base",10,2,2,"Gold","false","Gold",1000,,1,,"Stone Pickup",0
+"Sharp Stone 3","TID_OBSTACLE_STONE","sc/buildings.sc","env_sharpstone_3","env_sharpstone_3_base",10,2,2,"Gold","false","Gold",1000,,1,,"Stone Pickup",0
+"Sharp Stone 4","TID_OBSTACLE_STONE","sc/buildings.sc","env_sharpstone_4","env_sharpstone_4_base",10,3,3,"Gold","false","Gold",1000,,1,,"Stone Pickup",0
+"Sharp Stone 5","TID_OBSTACLE_STONE","sc/buildings.sc","env_sharpstone_5","env_sharpstone_5_base",10,3,3,"Gold","false","Gold",1000,,1,,"Stone Pickup",0

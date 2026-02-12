@@ -1,11 +1,13 @@
 const PiranhaMessage = require('../../PiranhaMessage')
 
 class LoginFailedMessage extends PiranhaMessage {
-  constructor (client) {
+  constructor (client, errorCode, reason) {
     super()
     this.id = 20103
     this.client = client
     this.version = 4
+    this.errorCode = errorCode
+    this.reason = reason
   }
 
   async encode () {
@@ -13,12 +15,12 @@ class LoginFailedMessage extends PiranhaMessage {
     // 9 = Connection Error
     // 10 = Maintenance
     // 11 = Banned
-    this.writeByte(10) // ErrorCode
+    this.writeByte(this.errorCode) // ErrorCode
     this.writeString('') // Fingerprint
     this.writeString(null)
     this.writeString('') // Content URL
     this.writeString('') // Update URL
-    this.writeString('RandomReason') // Reason
+    this.writeString(this.reason) // Reason
     this.writeInt(0) // Maintenance Seconds
   }
 }

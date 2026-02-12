@@ -1,0 +1,163 @@
+"Name","SWF","ExportName","Sound","Volume","MinPitch","MaxPitch","ParticleEmitter","CameraShake","AttachToParent","Looping","IsoLayer"
+"String","String","String","String","int","int","int","String","int","boolean","boolean","String"
+"Collect Gold",,,"sfx/coins_collect_01.wav",90,100,100,"Collect Gold",,,,"top"
+"Collect Elixir",,,"sfx/elixir_collect_02.wav",90,100,100,"Collect Elixir",,,,"top"
+"Collect Diamonds",,,"sfx/collect_diamonds_01.wav",80,100,100,"Collect Diamonds",,,,"top"
+"Steal Gold",,,"sfx/coin_steal_02.wav",80,100,100,"Steal Gold",,,,"top"
+"Steal Elixir",,,"sfx/elixir_steal_03.wav",80,100,100,"Steal Elixir",,,,"top"
+"XP Gain",,,"sfx/xp_gain_06.wav",90,100,100,"XP Gain",,,,"top"
+"XP Level Up",,,"sfx/xp_level_up_01.wav",100,100,100,"XP Level Up",,,,
+"Alliance",,,"sfx/alliance_jingle.wav",100,100,100,,,,,
+"Building Ready",,,"sfx/building_finished_01.wav",100,100,100,"Building Ready",,,,"top"
+"Building Destroyed",,,"sfx/building_destroyed_01.wav",100,85,95,"Building Destroyed",,,,"objects"
+,,,,,,,"Smoke",,,,
+,,,,,,,"Grass",,,,
+"Start Building",,,"sfx/building_construct_07.wav",100,100,100,"Smoke",,"true",,"top"
+"NoRoomForTroop",,,,,,,,,,,
+"TrainingFinished",,,"sfx/training_finished_03.wav",100,100,100,"Dust",,"true",,"top"
+"Sell Item",,,"sfx/sell_item_01.wav",70,100,100,,,,,
+"Moving",,,"sfx/moving_07.wav",60,110,115,,,,,
+"Illegal Position",,,"sfx/bad_move_06.wav",60,100,100,,,,,
+"Clear Tombstone",,,,,,,"Grass",,,,"objects"
+,,,,,,,"Dust2",,,,"objects"
+"Generic Pick Up",,,"sfx/wall_pickup_01.wav",50,100,100,,,,,
+"Generic Placing",,,"sfx/cannon_drop2.wav",50,100,100,"Place",,"true",,"top"
+"Generic Hit",,,"sfx/barbarian_hit_stuff.wav",65,100,100,"DefenceHit",,,,"objects"
+"Cannon Attack",,,"sfx/cannon_08.wav",100,100,100,"Cannon",,,,"objects"
+"Trap Eject",,,"sfx/trap_eject_01v2.wav",100,100,100,"Trap",50,,,"objects"
+,,,,,,,"Grass",,,,"objects"
+,,,,,,,"Grass",,,,"objects"
+"Bomb Exposion",,,"sfx/explosion_02.wav",100,100,100,"Smoke",50,,,"objects"
+,,,,,,,"Grass",,,,"objects"
+,,,,,,,"Ring",,,,"objects"
+"IsoTestFX",,,"sfx/explosion_02.wav",100,100,100,"IsoTestFX",,,,"objects"
+"Barbarian Deploy",,,"sfx/barb_deploy_11.wav",50,100,100,"Deploy",,,,"objects"
+,,,"sfx/barb_deploy_11v2.wav",50,100,100,,,,,"objects"
+,,,"sfx/barb_deploy_11v3.wav",50,100,100,,,,,"objects"
+"Archer Deploy",,,"sfx/archer_deploy_09.wav",80,100,100,"Deploy",,,,"objects"
+,,,"sfx/archer_deploy_09v2.wav",80,100,100,,,,,
+,,,"sfx/archer_deploy_09v3.wav",80,100,100,,,,,
+"Giant Deploy",,,"sfx/giant_deploy_04.wav",90,100,100,"Deploy",20,,,"objects"
+,,,"sfx/giant_deploy_04v2.wav",90,100,100,"Grass",,,,"objects"
+,,,"sfx/giant_deploy_04v3.wav",90,100,100,"Place",,,,"objects"
+"Dragon Deploy",,,"sfx/dragon_deploy_01.wav",100,100,100,,,,,
+"Goblin Deploy",,,"sfx/goblin_deploy_14.wav",70,100,100,"Deploy",,,,"objects"
+,,,"sfx/goblin_deploy_14v2.wav",70,100,100,,,,,
+,,,"sfx/goblin_deploy_14v3.wav",70,100,100,,,,,
+"Wall Breaker Deploy",,,"sfx/deploy_skeleton_07.wav",100,100,100,"Deploy",,,,
+,,,"sfx/deploy_skeleton_07v2.wav",100,100,100,,,,,
+,,,"sfx/deploy_skeleton_07v3.wav",100,100,100,,,,,
+"Balloon Goblin Deploy",,,"sfx/balloon_deploy_02.wav",100,100,100,,,,,
+"Healer Deploy",,,"sfx/healer_deploy_01.wav",100,100,100,,,,,
+"Wizard Deploy",,,"sfx/mage_deploy_06.wav",100,100,100,"Deploy",,,,"objects"
+"Barbarian Attack",,,"sfx/barbarian_sword_swing_hit_14.wav",50,90,110,,,,,
+,,,"sfx/barbarian_sword_swing_hit_14v3.wav",50,90,110,,,,,
+,,,"sfx/barbarian_sword_swing_hit_14v2.wav",50,90,110,,,,,
+"Archer Attack",,,"sfx/arrow_hit_07.wav",80,90,110,,,,,
+,,,"sfx/arrow_hit_07v2.wav",80,90,110,,,,,
+,,,"sfx/arrow_hit_07v3.wav",80,90,110,,,,,
+"Giant Attack",,,"sfx/giant_attack_06.wav",90,90,110,,,,,
+,,,"sfx/giant_attack_05.wav",90,90,110,,,,,
+"Dragon Attack",,,"sfx/dragon_attack_01.wav",100,95,105,"Fire",,"true",,"top"
+,,,,,,,"Smoke_small",,"true",,"top"
+,,,,,,,"Spark",,"true",,"objects"
+"Goblin Attack",,,"sfx/gob_attack_01.wav",80,90,110,,,,,
+,,,"sfx/gob_attack_02.wav",80,90,110,,,,,
+,,,"sfx/gob_attack_03.wav",80,90,110,,,,,
+"Wall Breaker Attack",,,"sfx/wall_breaker_attack_01.wav",100,95,105,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+"Balloon Goblin Attack",,,"sfx/cannon_fire3.wav",80,90,110,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+"Healer Attack",,,"sfx/healer_attack_01.wav",80,95,105,,,,,
+"Wizard Attack",,,"sfx/mage_attack_02.wav",100,90,100,"Dust",,"true",,"objects"
+,,,"sfx/mage_attack_02v2.wav",100,100,110,,,,,
+,,,"sfx/mage_attack_02v3.wav",100,90,100,,,,,
+"Barbarian Hit",,,"sfx/barbarian_hit_stuff2.wav",60,90,110,"Hit",,"true",,"objects"
+,,,"sfx/barbarian_hit_stuff3.wav",50,90,110,,,,,
+,,,"sfx/barbarian_hit_stuff4.wav",55,90,110,,,,,
+"Archer Hit",,,"sfx/arrow_hit_12.wav",60,90,110,"Hit",,"true",,"objects"
+"Giant Hit",,,"sfx/giant_attack_hit_01.wav",80,90,110,"Hit",,"true",,"objects"
+,,,"sfx/giant_attack_hit_02.wav",80,90,110,"Cannon",,"true",,"objects"
+"Dragon Hit",,,,,,,,,,,
+"Goblin Hit",,,,,,,,,,,
+"Wall Breaker Hit",,,"sfx/cannon_fire3.wav",80,90,110,"Smoke",50,,,"objects"
+,,,,,,,"Grass",,,,"objects"
+,,,,,,,"Ring",,,,"objects"
+"Balloon Goblin Hit",,,"sfx/balloon_hit_01.wav",,,,"Smoke",50,,,"objects"
+,,,,,,,"Grass",,,,"objects"
+,,,,,,,"Ring",,,,"objects"
+"Healer Hit",,,"sfx/healer_hit_01.wav",,,,,,,,
+"Wizard Hit",,,"sfx/wizard_hit_01.wav",,,,"Hit",,"true",,"objects"
+"Barbarian Die",,,"sfx/barbarian_death_01.wav",70,100,110,"Splat",,"true",,"top"
+"Archer Die",,,"sfx/archer_death_05.wav",60,95,105,"Splat",,"true",,"top"
+"Giant Die",,,"sfx/giant_death_02.wav",100,90,110,"SplatBig",,"true",,"top"
+"Dragon Die",,,"sfx/dragon_die_01.wav",100,95,105,"SplatBig",,"true",,"top"
+"Goblin Die",,,"sfx/goblin_death_02.wav",100,95,110,"Splat",,"true",,"top"
+"Wall Breaker Die",,,"sfx/wall_breaker_die_01.wav",,,,"Splat",,"true",,"top"
+"Balloon Goblin Die",,,"sfx/balloon_die_01.wav",,,,"SplatBig",,"true",,"top"
+"Healer Die",,,"sfx/healer_die_01.wav",100,95,105,"SplatBig",,"true",,"top"
+"Wizard Die",,,"sfx/wizard_die_01.wav",100,95,105,"Splat",,"true",,"top"
+"Troop Housing Pickup",,,"sfx/troop_housing_pickup_09.wav",100,100,100,"Grass",,,,"top"
+"Town Hall Pickup",,,"sfx/build_pickup_05.wav",100,100,100,"Grass",,,,"top"
+"Elixir Pump Pickup",,,"sfx/elixir_pump_pickup_07.wav",100,100,100,"Grass",,,,"top"
+"Elixir Storage Pickup",,,"sfx/elixir_storage_pickup_04.wav",100,100,100,"Grass",,,,"top"
+"Gold Mine Pickup",,,"sfx/goldmine_pickup4.wav",100,100,100,"Grass",,,,"top"
+"Gold Storage Pickup",,,"sfx/golden_haus_04.wav",100,100,100,"Grass",,,,"top"
+"Training Barrack Pickup",,,"sfx/troop_housing_pickup_06.wav",100,100,100,"Grass",,,,"top"
+"Basic Turret Pickup",,,"sfx/cannon_pickup3.wav",100,100,100,"Grass",,,,"top"
+"Tower Turret Pickup",,,"sfx/archer_tower_pick_01.wav",100,100,100,"Grass",,,,"top"
+"Weak Wall Pickup",,,"sfx/wall_pickup_01.wav",100,100,100,"Grass",,,,"top"
+"Wizard Tower Pickup",,,"sfx/wizard_tower_pickup_02.wav",100,100,100,"Grass",,,,"top"
+"Air Defence Pickup",,,"sfx/air_def_pickup_03.wav",100,100,100,"Grass",,,,"top"
+"Mortar Pickup",,,"sfx/mortar_pickup_01.wav",100,100,100,"Grass",,,,"top"
+"Alliance Castle Pickup",,,"sfx/alliance_build_pickup_03.wav",100,100,100,"Grass",,,,"top"
+"Troop Housing Placing",,,"sfx/troop_housing_placing_08.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Town Hall Placing",,,"sfx/town_hall_placing_04.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Elixir Pump Placing",,,"sfx/elixir_pump_drop_03.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Elixir Storage Placing",,,"sfx/elixir_storage_drop_02.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Gold Mine Placing",,,"sfx/goldmine_drop4.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Gold Storage Placing",,,"sfx/golden_haus_drop_02.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Training Barrack Placing",,,"sfx/troop_housing_placing_06.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Basic Turret Placing",,,"sfx/cannon_drop2.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Tower Turret Placing",,,"sfx/archer_tower_place_02.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Weak Wall Placing",,,"sfx/wall_place_01.wav",100,100,100,"Grass",,"true",,"objects"
+,,,,,,,,,,,
+"Wizard Tower Placing",,,"sfx/wizard_tower_drop_01.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Air Defence Placing",,,"sfx/air_defense_place_01.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Mortar Placing",,,"sfx/mortar_place_02.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Alliance Castle Placing",,,"sfx/alliance_build_drop_04.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,"true",,"objects"
+"Stone Pickup",,,"sfx/rock_pickup3.wav",100,100,100,"Rocks",,"true",,"objects"
+,,,,,,,,,,,
+"Bush Pickup",,,"sfx/bush2.wav",100,100,100,"Grass",,,,"objects"
+"Tree Pickup",,,"sfx/tree8.wav",100,100,100,"Wood",,,,"objects"
+"Worker Building Placing",,,"sfx/builder_hut_place_02.wav",100,100,100,"Place",,"true",,"objects"
+,,,,,,,"Grass",,,,
+"Worker Building Pickup",,,"sfx/builder_hut_pickup_02.wav",100,100,100,"Grass",,,,"objects"
+"Flower Pickup",,,"sfx/flower_03.wav",80,100,100,"Grass",,,,
+"Pekka Deploy",,,"sfx/deploy_pekka_05.wav",100,100,100,"Deploy",,,,"objects"
+"Pekka Attack",,,"sfx/pekka_attack_02.wav",90,100,110,,,,,
+,,,"sfx/pekka_attack_02v2.wav",90,100,110,,,,,
+"Pekka Hit",,,"sfx/pekka_attack_hit_01.wav",90,100,110,"Hit",,"true",,"objects"
+,,,"sfx/pekka_attack_hit_02.wav",90,100,110,,,,,
+"Pekka Die",,,"sfx/pekka_death_06.wav",100,100,110,"SplatBig",,"true",,"top"
+"Mortar Hit",,,"sfx/mortar_hit_01.wav",100,95,105,"MortarHit",100,"true",,"top"
+,,,,,,,"Ring",,"true",,"top"
+,,,,,,,"Stone",,"true",,"top"
+,,,,,,,"Grass",,"true",,"top"
+,,,,,,,"Grass",,"true",,"top"
+,,,,,,,"Grass",,"true",,"top"

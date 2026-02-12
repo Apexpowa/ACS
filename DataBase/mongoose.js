@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const config = require('../config.json');
 
+const LoginFailedMessage = require('../Protocol/Messages/Server/LoginFailedMessage')
+
 module.exports = class DataBase {
     constructor() { }
     connect(isSuccess) {
@@ -36,7 +38,7 @@ module.exports = class DataBase {
                 if (player) {
                     callback(false, player);
                 } else {
-                   // if (device.userObject.token === '') {
+                   //if (device.userObject.token === '') {
                         this.mongoosePlayers.findOne({})
                             .sort({
                                 lowID: 'desc'
@@ -53,38 +55,48 @@ module.exports = class DataBase {
                                         });
                                 });
                             });
-                   // }
-                   /* else {
-                        let LoginFailed = new global.MessageFactory.serverMessages.LoginFailed(this.device, 3, 'Clean app data and try again');
-                        LoginFailed.encode();
-                        LoginFailed.send(false);
+                   /*}
+                    else {
+                        new LoginFailedMessage(this.client, 3, 'Clear your app data and try again!').send()
                     }*/
-
                 }
             })
             .catch(error => {
                 console.log(`An error occoured fetching a player from the database`, error);
             });
     }
-    getClan(userObject, callback) {
-        if (userObject.clan) {
-            this.mongoosePlayers.findOne({
-                highID: userObject.clan.highID,
-                lowID: userObject.clan.lowID
+    getClan(device, callback) {
+        if (device.player.inClan) {
+            this.mongooseClans.findOne({
+                highID: device.clanObject.ClanHighID,
+                lowID: device.clanObject.ClanLowID
             })
                 .then(clan => {
                     if (clan) {
-                        console.log("Clan found");
+                        console.log("Clan found!");
                         callback(clan);
                     } else {
-                        console.log("Clan not found");
+                        console.log("Clan not found!");
+                        this.mongooseClans.findOne({})
+                            .sort({
+                                lowID: 'desc'
+                            })
+                            .then(lastClan => {
+                                this.mongooseClans.create({
+                                    highID: 0,
+                                    lowID: lastClan ? (lastClan.lowID + 1) : 1
+                                })
+                                    .then(createdClan => {
+                                        callback(false, createdClan);
+                                    });
+                            });
                     }
                 })
                 .catch(error => {
                     console.log(`An error occoured fetching a clan from the database`, error);
                 });
         } else {
-            console.log(`Player doesn't have a clan`);
+            console.log(`Player doesn't have a clan!`);
         }
     }
 }

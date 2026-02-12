@@ -7,7 +7,7 @@ class LogicBuyBuildingCommand {
     this.data.BuildingID = self.readInt()
     this.data.Unknown = self.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process (self) {

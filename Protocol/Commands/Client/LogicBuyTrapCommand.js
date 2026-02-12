@@ -8,7 +8,7 @@ class LogicBuyTrapCommand {
     this.data.PositionY = self.readInt()
     this.data.TrapID = self.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process(self) {

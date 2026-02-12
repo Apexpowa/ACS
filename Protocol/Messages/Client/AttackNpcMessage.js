@@ -14,7 +14,7 @@ class AttackNpcMessage extends PiranhaMessage {
 
     this.data.LevelID = this.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process () {

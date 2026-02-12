@@ -1,0 +1,5 @@
+"Name","TID","TimeH","Diamonds","IconSWF","IconExportName"
+"String","String","int","int","String","String"
+"Shield 1D","TID_SHOP_SHIELD_1D",24,100,"sc/shop.sc","icon_shield_1"
+"Shield 2D","TID_SHOP_SHIELD_2D",48,150,"sc/shop.sc","icon_shield_2"
+"Shield 7D","TID_SHOP_SHIELD_7D",168,250,"sc/shop.sc","icon_shield_3"

@@ -8,7 +8,7 @@ class LogicBuyDecoCommand {
     this.data.PositionY = self.readInt()
     this.data.DecorationID = self.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process(self) {

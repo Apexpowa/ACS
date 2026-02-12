@@ -1,5 +1,6 @@
 const fs = require("fs")
 const PiranhaMessage = require('../../PiranhaMessage')
+const ClientHome = require('../../../Logic/ClientHome')
 const ClientAvatar = require('../../../Logic/ClientAvatar')
 
 const startingHome = JSON.parse(
@@ -18,13 +19,22 @@ class NpcDataMessage extends PiranhaMessage {
   async encode () {
     this.writeInt(0)
 
-    this.base = JSON.stringify(startingHome)
-    this.writeString(this.base)
+    {
+      this.writeInt(0) // NpcTimestamp
+      this.writeLong(this.client.player.highID, this.client.player.lowID) // HighID, LowID
+      this.base = JSON.stringify(startingHome)
+      this.writeString(this.base)
+      this.writeInt(0) // ShieldDurationSeconds
+      this.writeInt(0) // GuardDurationSeconds
+      this.writeInt(0) // PersonalDurationSeconds
+
+      const avatar = new ClientAvatar()
+      avatar.encode(this)
+    }
 
     const avatar = new ClientAvatar()
     avatar.encode(this)
 
-    this.writeInt(0)
     this.writeInt(this.levelID) // NpcID
   }
 }

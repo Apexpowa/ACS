@@ -18,12 +18,12 @@ class ClientHome {
 
       self.client.player.markModified('village')
       self.client.player.save()
-      self.client.log('Created a new village!')
+      //self.client.log('Created a new village!')
     }
     else {
       self.writeString(self.client.player.village)
 
-      self.client.log('Loaded village!')
+      //self.client.log('Loaded village!')
     }
 
     self.writeInt(self.client.player.shieldDurationSeconds) // ShieldDurationSeconds

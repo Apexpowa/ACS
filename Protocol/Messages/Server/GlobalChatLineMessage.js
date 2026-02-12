@@ -19,8 +19,8 @@ class GlobalChatLineMessage extends PiranhaMessage {
     if (this.client.player.inClan === 1) {
       this.writeByte(1) // IsInAlliance
       this.writeLong(this.client.player.clan.ClanHighID, this.client.player.clan.ClanLowID) // HighID, LowID
-      this.writeString(this.client.player.clan.ClanName) // Name
-      this.writeInt(this.client.player.clan.ClanBadge) // Badge
+      this.writeString('Clashers') // Name
+      this.writeInt(13000000) // Badge
     }
   }
 }

@@ -1,6 +1,4 @@
 class LogicChangeAvatarNameCommand {
-  constructor() {}
-
   async decode () {}
 
   async encode (self) {

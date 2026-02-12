@@ -1,0 +1,10 @@
+"Name","SWF","ExportName","ParticleEmitter","Speed","StartHeight","StartOffset","IsBallistic"
+"String","String","String","String","int","int","int","boolean"
+"Cannonball","sc/buildings.sc","basic_turret_ammo",,1200,75,38,
+"Arrow_small","sc/characters.sc","arrow_ammo_small",,800,40,50,"true"
+"Firework","sc/buildings.sc","fw_ammo","firework_trail_emitter",800,60,20,"true"
+"Wizard Blast","sc/buildings.sc","blue_fireball1_projectile","blue_fireball_trail_emitter",800,190,50,
+"wizard_projectile","sc/buildings.sc","fireball1_projectile","fireball_trail_emitter",500,60,50,
+"Mortar Ammo","sc/buildings.sc","mortar_ammo","mortar_trail",500,95,20,"true"
+"Tower Arrow","sc/characters.sc","arrow_ammo_small",,900,190,50,"true"
+"HealerEnergy","sc/characters.sc","healer_projectile1","heal_trail",1200,40,38,

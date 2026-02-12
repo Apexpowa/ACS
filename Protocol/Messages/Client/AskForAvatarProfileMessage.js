@@ -23,7 +23,7 @@ class AskForAvatarProfileMessage extends PiranhaMessage {
     this.data.HomeHighID = this.readInt()
     this.data.HomeLowID = this.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process () {

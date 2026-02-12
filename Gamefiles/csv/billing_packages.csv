@@ -1,0 +1,7 @@
+"Name","Disabled","Diamonds","USD","IconSWF","IconExportName"
+"String","boolean","int","int","String","String"
+"com.supercell.magic.package1",,500,499,"sc/shop.sc","icon_gem_small"
+"com.supercell.magic.package2",,1000,999,"sc/shop.sc","icon_gem_normal"
+"com.supercell.magic.package3",,2200,1999,"sc/shop.sc","icon_gem_medium"
+"com.supercell.magic.package4",,6000,4999,"sc/shop.sc","icon_gem_large"
+"com.supercell.magic.package5",,14000,9999,"sc/shop.sc","icon_gem_huge"
