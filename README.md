@@ -24,6 +24,7 @@ The goal of this emulator is to ensure a clean, easy-to-understand code environm
 ## Features
 - Saving villages
 - Buildings, defences, traps, heroes, decorations
+- Battles, leagues, view bases
 
 ---
 

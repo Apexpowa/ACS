@@ -99,6 +99,39 @@ module.exports = class DataBase {
             console.log(`Player doesn't have a clan!`);
         }
     }
+    
+    getRandomPlayer(excludeLowID, callback) {
+        this.mongoosePlayers.aggregate([
+            { $match: { lowID: { $ne: excludeLowID } } },
+            { $sample: { size: 1 } }
+        ])
+        .then(result => {
+            if (result.length > 0) {
+                callback(null, result[0])
+            } else {
+                callback("No players found!", null)
+            }
+        })
+        .catch(err => {
+            console.log("Error getting random player:", err)
+            callback(err, null)
+        })
+    }n
+
+    getSpecificPlayer(highID, lowID, callback) {
+        this.mongoosePlayers.findOne({ highID: highID, lowID: lowID })
+            .then(result => {
+                if (result) {
+                    callback(null, result)
+                } else {
+                    callback("Player not found!", null)
+                }
+            })
+            .catch(err => {
+                console.log("Error getting player:", err)
+                callback(err, null)
+            })
+    }
 }
 
 function generateToken(n, callback) {

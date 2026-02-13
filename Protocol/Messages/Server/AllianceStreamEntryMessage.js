@@ -10,7 +10,7 @@ class AllianceStreamEntryMessage extends PiranhaMessage {
   }
 
   async encode () {
-    this.writeInt(1) // StreamEntryType
+    this.writeInt(2) // StreamEntryType
     this.writeLong(1) // StreamEntryId
     this.writeLong(this.client.player.highID, this.client.player.lowID) // SenderAvatarId
     this.writeLong(this.client.player.highID, this.client.player.lowID) // HomeId

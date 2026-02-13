@@ -26,7 +26,7 @@ class AllianceDataMessage extends PiranhaMessage {
         this.writeInt(0) // WonWars
         this.writeInt(0) // LostWars
         this.writeInt(0) // DrawWars
-        this.writeInt(0x001E8481) // 
+        this.writeInt(0x001E8481)
         this.writeInt(0) // WarFrequency
         this.writeInt(0) // AllianceOrigin
         this.writeInt(0) // AllianceExperience
@@ -38,8 +38,8 @@ class AllianceDataMessage extends PiranhaMessage {
       this.writeByte(1)
       this.writeInt(0x03)
       this.writeInt(0x0008A5DF)
-      this.writeInt(count) // MemberCount
 
+      this.writeInt(count) // MemberCount
       for (var i = 1; i < count + 1; i++) {
         // AllianceMemberEntry
         {

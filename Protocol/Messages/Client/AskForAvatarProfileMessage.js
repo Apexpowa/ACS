@@ -27,7 +27,23 @@ class AskForAvatarProfileMessage extends PiranhaMessage {
   }
 
   async process () {
-    await new AvatarProfileMessage(this.client).send()
+    await new Promise(resolve => {
+      this.client.mongoose.getSpecificPlayer(
+        0,
+        this.data.AvatarLowID,
+        (err, plr) => {
+          if (!plr) {
+            console.log("Player not found!")
+            resolve()
+            return
+          }
+
+          new AvatarProfileMessage(this.client, plr).send()
+
+          resolve()
+        }
+      )
+    })
   }
 }
 

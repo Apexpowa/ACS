@@ -29,12 +29,13 @@ class NpcDataMessage extends PiranhaMessage {
       this.writeInt(0) // PersonalDurationSeconds
 
       const avatar = new ClientAvatar()
-      avatar.encode(this)
+      avatar.encode(this, this.client.player)
     }
 
     const avatar = new ClientAvatar()
-    avatar.encode(this)
+    avatar.encode(this, this.client.player)
 
+    this.writeInt(0)
     this.writeInt(this.levelID) // NpcID
   }
 }

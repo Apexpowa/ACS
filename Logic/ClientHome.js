@@ -5,30 +5,30 @@ const startingHome = JSON.parse(
 )
 
 class ClientHome {
-  async encode (self) {
+  async encode (self, player) {
     self.writeInt(0) // NpcTimestamp
 
-    self.writeLong(self.client.player.highID, self.client.player.lowID) // HighID, LowID
+    self.writeLong(player.highID, player.lowID) // HighID, LowID
 
     // Village
-    if (self.client.player.village == '') {
-      self.client.player.village = JSON.stringify(startingHome)
+    if (player.village == '') {
+      player.village = JSON.stringify(startingHome)
     
-      self.writeString(self.client.player.village)
+      self.writeString(player.village)
 
-      self.client.player.markModified('village')
-      self.client.player.save()
+      player.markModified('village')
+      player.save()
       //self.client.log('Created a new village!')
     }
     else {
-      self.writeString(self.client.player.village)
+      self.writeString(player.village)
 
       //self.client.log('Loaded village!')
     }
 
-    self.writeInt(self.client.player.shieldDurationSeconds) // ShieldDurationSeconds
-    self.writeInt(self.client.player.guardDurationSeconds) // GuardDurationSeconds
-    self.writeInt(self.client.player.personalDurationSeconds) // PersonalDurationSeconds
+    self.writeInt(player.shieldDurationSeconds) // ShieldDurationSeconds
+    self.writeInt(player.guardDurationSeconds) // GuardDurationSeconds
+    self.writeInt(player.personalDurationSeconds) // PersonalDurationSeconds
   }
 }
 
