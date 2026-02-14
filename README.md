@@ -22,9 +22,7 @@ The goal of this emulator is to ensure a clean, easy-to-understand code environm
 ---
 
 ## Features
-- Saving villages
-- Buildings, defences, traps, heroes, decorations
-- Battles, leagues, visit bases
+- Saving villages, buildings, defences, traps, heroes, decorations, battles, leagues, visit bases, proxy
 
 ---
 
@@ -80,4 +78,5 @@ After starting the server, use the **Apexpowa client** available in the **Releas
 **Apexpowa**'s resources and programs are protected under the GPL-3.0 license. **Apexpowa**'s resources and programs are created by the (**Apexpowa**) team.
 **Apexpowa** is **NOT** affiliated with 'Supercell, Oy'.
 **Apexpowa** does **NOT** own 'Clash of Clans', 'Boom Beach', 'Clash Royale', and/or 'Hay Day'.
+
 
