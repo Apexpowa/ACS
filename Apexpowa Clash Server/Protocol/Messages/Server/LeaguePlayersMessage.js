@@ -26,22 +26,22 @@ class LeaguePlayersMessage extends PiranhaMessage {
       this.writeInt(count)
       this.writeInt(1) // Level
       this.writeInt(200)
-      /*this.writeInt(count)
+      this.writeInt(count)
       this.writeInt(100)
       this.writeInt(1)
       this.writeLong(0, 1) // HighID, LowID
       this.writeInt(1)
-      this.writeInt(1)*/
-      if ()
-      //{
-      /*    this.writeByte(1)
-          this.writeLong(0, 1) // HighID, LowID
-          this.writeString('Clashers') // Name
-          this.writeInt(13000000) //Badge
-          this.writeLong(count)*/
-      //}
-      //else
-          this.writeByte(0)
+      this.writeInt(1)
+      if (this.client.player.inClan === 1)
+      {
+        this.writeByte(1)
+        this.writeLong(0, 1) // HighID, LowID
+        this.writeString('Clashers') // Name
+        this.writeInt(13000000) // Badge
+      }
+      else {
+        this.writeByte(0)
+      }
 
       count += 1
     }
