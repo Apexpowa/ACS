@@ -1,7 +1,7 @@
 {
-  "name": "apexpowa_clash_server",
-  "version": "6.253",
-  "description": "A next-generation Clash of Clans private server emulator written in JavaScript.",
+  "name": "apexpowa_clash_proxy",
+  "version": "1.0.0",
+  "description": "A next-generation Clash of Clans private server proxy written in JavaScript.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
