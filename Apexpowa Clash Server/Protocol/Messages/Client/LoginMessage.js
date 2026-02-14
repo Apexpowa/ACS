@@ -2,6 +2,7 @@ const PiranhaMessage = require('../../PiranhaMessage')
 const LoginFailedMessage = require('../Server/LoginFailedMessage')
 const LoginOkMessage = require('../Server/LoginOkMessage')
 const OwnHomeDataMessage = require('../Server/OwnHomeDataMessage')
+const LeaguePlayersMessage = require('../Server/LeaguePlayersMessage')
 
 class LoginMessage extends PiranhaMessage {
   constructor (bytes, client) {
@@ -34,6 +35,7 @@ class LoginMessage extends PiranhaMessage {
       this.client.player = player
       await new LoginOkMessage(this.client).send()
       await new OwnHomeDataMessage(this.client).send()
+      await new LeaguePlayersMessage(this.client).send()
     })
   }
 }

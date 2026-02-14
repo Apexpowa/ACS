@@ -9,43 +9,42 @@ class LeaguePlayersMessage extends PiranhaMessage {
   }
 
   async encode () {
-    let i = 1
+    let count = 1
 
-    /*{
-      if (i >= 51) {
+    {
+      if (count >= 51) {
         return
       }
+
+      this.writeInt(9000)
+      this.writeInt(count - 0)
       
       this.writeLong(this.client.player.highID, this.client.player.lowID)
       this.writeString(this.client.player.name) // Name
-      this.writeInt(i)
+      this.writeInt(count)
       this.writeInt(this.client.player.trophies) // Trophies
-      this.writeInt(i)
+      this.writeInt(count)
       this.writeInt(1) // Level
       this.writeInt(200)
-      this.writeInt(i)
+      /*this.writeInt(count)
       this.writeInt(100)
       this.writeInt(1)
       this.writeLong(0, 1) // HighID, LowID
       this.writeInt(1)
-      this.writeInt(1)
-      //if (pl.AllianceId > 0)
+      this.writeInt(1)*/
+      if ()
       //{
-      //    this.writeByte(1)
-      //    this.writeLong(pl.AllianceId)
-      //    Alliance _Alliance = ObjectManager.GetAlliance(pl.AllianceId)
-      //    this.writeString(_Alliance.m_vAllianceName)
-      //    this.writeInt(_Alliance.m_vAllianceBadgeData)
-      //    this.writeLong(i)
+      /*    this.writeByte(1)
+          this.writeLong(0, 1) // HighID, LowID
+          this.writeString('Clashers') // Name
+          this.writeInt(13000000) //Badge
+          this.writeLong(count)*/
       //}
       //else
           this.writeByte(0)
 
-      i += 1
-    }*/
-
-    //this.writeInt(9000)
-    //this.writeInt(1 - 0)
+      count += 1
+    }
   }
 }
 

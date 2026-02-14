@@ -116,7 +116,7 @@ module.exports = class DataBase {
             console.log("Error getting random player:", err)
             callback(err, null)
         })
-    }n
+    }
 
     getSpecificPlayer(highID, lowID, callback) {
         this.mongoosePlayers.findOne({ highID: highID, lowID: lowID })
