@@ -9,6 +9,7 @@ const LogicClearObstacleCommand = require('../../Commands/Client/LogicClearObsta
 const LogicTrainUnitCommand = require('../../Commands/Client/LogicTrainUnitCommand')
 const LogicBuyTrapCommand = require('../../Commands/Client/LogicBuyTrapCommand')
 const LogicBuyDecoCommand = require('../../Commands/Client/LogicBuyDecoCommand')
+const LogicBuyResourceCommand = require('../../Commands/Client/LogicBuyResourceCommand')
 const LogicUnlockBuildingCommand = require('../../Commands/Client/LogicUnlockBuildingCommand')
 const LogicNewShopItemsSeenCommand = require('../../Commands/Client/LogicNewShopItemsSeenCommand')
 const LogicMoveMultipleBuildingsCommand = require('../../Commands/Client/LogicMoveMultipleBuildingsCommand')
@@ -51,6 +52,7 @@ class EndClientTurnMessage extends PiranhaMessage {
       508: LogicTrainUnitCommand,
       510: LogicBuyTrapCommand,
       512: LogicBuyDecoCommand,
+      518: LogicBuyResourceCommand,
       520: LogicUnlockBuildingCommand,
       532: LogicNewShopItemsSeenCommand,
       533: LogicMoveMultipleBuildingsCommand,

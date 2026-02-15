@@ -62,7 +62,9 @@ server.on('connection', async (client) => {
         console.log(e)
       }
     } else {
-      client.log(`Gotcha undefined ${message.id} packet!`)
+      if (message.id > 10099) {
+        client.log(`Gotcha undefined ${message.id} packet!`)
+      }
     }
   })
 

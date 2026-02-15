@@ -26,11 +26,11 @@ class ClientAvatar {
     })
     self.writeInt(10) // AllianceCastleTotalCapacity
     self.writeInt(0) // AllianceCastleUsedCapacity
-    village.buildings.forEach(b => {
-      if (b.data === 1000000) {
-        self.writeInt(b.data.lvl) // TownhallLevel
-      }
-    })
+    /*village.buildings.forEach(b => {
+      if (b.data === 1000001) {*/
+        self.writeInt(9/*b.data.lvl*/) // TownhallLevel
+    /*  }
+    })*/
     self.writeString(player.name) // Name
     self.writeString(player.facebookID) // FacebookID
     self.writeInt(player.level) // Level

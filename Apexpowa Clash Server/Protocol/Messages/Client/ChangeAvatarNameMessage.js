@@ -28,10 +28,12 @@ class ChangeAvatarNameMessage extends PiranhaMessage {
     this.client.player.name = this.data.Name
     this.client.player.nameChangesCount += 1
     this.client.player.tutorialSteps = 35
+    this.client.player.xpPoints += 7
 
     this.client.player.markModified('name')
     this.client.player.markModified('nameChangesCount')
     this.client.player.markModified('tutorialSteps')
+    this.client.player.markModified('xpPoints')
     await this.client.player.save()
 
     await new AvailableServerCommandMessage(this.client, 3).send()

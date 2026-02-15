@@ -35,7 +35,6 @@ class LoginMessage extends PiranhaMessage {
       this.client.player = player
       await new LoginOkMessage(this.client).send()
       await new OwnHomeDataMessage(this.client).send()
-      await new LeaguePlayersMessage(this.client).send()
     })
   }
 }
