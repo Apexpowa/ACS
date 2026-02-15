@@ -21,16 +21,16 @@ class ClientAvatar {
     village = JSON.parse(village)
     village.buildings.forEach(b => {
       if (b.data === 1000014) {
-        self.writeInt(b.data.lvl) // AllianceCastleLevel
+        self.writeInt(b.lvl) // AllianceCastleLevel
       }
     })
     self.writeInt(10) // AllianceCastleTotalCapacity
     self.writeInt(0) // AllianceCastleUsedCapacity
-    /*village.buildings.forEach(b => {
-      if (b.data === 1000001) {*/
-        self.writeInt(9/*b.data.lvl*/) // TownhallLevel
-    /*  }
-    })*/
+    village.buildings.forEach(b => {
+      if (b.data === 1000001) {
+        self.writeInt(b.lvl) // TownhallLevel
+      }
+    })
     self.writeString(player.name) // Name
     self.writeString(player.facebookID) // FacebookID
     self.writeInt(player.level) // Level
@@ -76,7 +76,7 @@ class ClientAvatar {
         village.buildings.forEach(b => {
           if (b.data === 1000022) { // BK
             self.writeInt(28000000) // ID
-            self.writeInt(b.data.lvl) // Level
+            self.writeInt(b.lvl) // Level
           }
         })
       }
@@ -84,13 +84,13 @@ class ClientAvatar {
         village.buildings.forEach(b => {
           if (b.data === 1000022) { // BK
             self.writeInt(28000000) // ID
-            self.writeInt(b.data.lvl) // Level
+            self.writeInt(b.lvl) // Level
           }
         })
         village.buildings.forEach(b => {
           if (b.data === 1000025) { // Q
             self.writeInt(28000001) // ID
-            self.writeInt(b.data.lvl) // Level
+            self.writeInt(b.lvl) // Level
           }
         })
       }
