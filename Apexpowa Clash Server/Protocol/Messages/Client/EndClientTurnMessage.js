@@ -73,14 +73,14 @@ class EndClientTurnMessage extends PiranhaMessage {
       var command = new Commands[this.data.CommandID](this.client)
 
       if (config.Server.Debug) {
-        this.client.log(`Gotcha ${this.data.CommandID} (${command.constructor.name}) packet! `)
+        this.client.log(`Gotcha ${this.data.CommandID} (${command.constructor.name}) command! `)
       }
 
       await command.decode(this)
       await command.process(this)
     }
     else {
-      this.client.log(`Gotcha undefined ${this.data.CommandID} packet!`)
+      this.client.log(`Gotcha undefined ${this.data.CommandID} command!`)
     }
   }
 }

@@ -22,17 +22,12 @@ class SendGlobalChatLineMessage extends PiranhaMessage {
     if (this.data.Message?.startsWith('/')) {
       const args = this.data.Message.slice(1).trim().split(/\s+/)
       const command = args.shift()?.toLowerCase()
-      const player = this.client.player
 
       switch (command) {
         case 'visit': {
           const id = parseInt(args[0], 10)
 
-          console.log(id)
-
-          if (isNaN(id)) {
-            break
-          }
+          //console.log(id)
 
           await new Promise(resolve => {
             this.client.mongoose.getSpecificPlayer(

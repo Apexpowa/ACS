@@ -17,9 +17,11 @@ class AllianceStreamEntryMessage extends PiranhaMessage {
     this.writeString(this.client.player.name) // SenderName
     this.writeInt(this.client.player.level) // SenderLevel
     this.writeInt(this.client.player.league) // SenderLeagueType
-    this.writeInt(4) // SenderRole
+    this.writeInt(2) // SenderRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
     this.writeInt(1) // AgeSeconds
     this.writeByte(0) // IsRemoved
+
+    this.writeString(this.message)
   }
 }
 

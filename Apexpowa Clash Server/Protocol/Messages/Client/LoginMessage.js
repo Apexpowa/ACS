@@ -2,7 +2,10 @@ const PiranhaMessage = require('../../PiranhaMessage')
 const LoginFailedMessage = require('../Server/LoginFailedMessage')
 const LoginOkMessage = require('../Server/LoginOkMessage')
 const OwnHomeDataMessage = require('../Server/OwnHomeDataMessage')
-const LeaguePlayersMessage = require('../Server/LeaguePlayersMessage')
+const AvatarStreamMessage = require('../Server/AvatarStreamMessage')
+const AllianceFullEntryMessage = require('../Server/AllianceFullEntryMessage')
+const WarMapMessage = require('../Server/WarMapMessage')
+const AllianceAllEntryMessage = require('../Server/AllianceAllEntryMessage')
 
 class LoginMessage extends PiranhaMessage {
   constructor (bytes, client) {
@@ -35,6 +38,13 @@ class LoginMessage extends PiranhaMessage {
       this.client.player = player
       await new LoginOkMessage(this.client).send()
       await new OwnHomeDataMessage(this.client).send()
+      await new AvatarStreamMessage(this.client).send()
+
+      if (this.client.player.inClan === 1) {
+        await new AllianceFullEntryMessage(this.client).send()
+        //await new WarMapMessage(this.client).send()
+        await new AllianceAllEntryMessage(this.client).send()
+      }
     })
   }
 }

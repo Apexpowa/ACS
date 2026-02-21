@@ -10,7 +10,7 @@ class ClientAvatar {
       self.writeLong(player.clan.ClanHighID, player.clan.ClanLowID) // HighID, LowID
       self.writeString('Clashers') // AllianceName
       self.writeInt(13000000) // AllianceBadge
-      self.writeInt(4) // AllianceRole
+      self.writeInt(2) // AllianceRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
       
       self.writeByte(0) // 6.253
     }

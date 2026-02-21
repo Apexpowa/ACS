@@ -14,7 +14,7 @@ class VisitHomeMessage extends PiranhaMessage {
 
     this.data.LowID = this.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process () {

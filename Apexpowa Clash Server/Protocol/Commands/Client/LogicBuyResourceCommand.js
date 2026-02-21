@@ -5,7 +5,7 @@ class LogicBuyResourceCommand {
     this.data.ResourceData = self.readInt()
     this.data.ResourceCount = self.readInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process (self) {
