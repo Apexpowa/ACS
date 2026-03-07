@@ -20,10 +20,12 @@ server.on('connection', async (client) => {
   client.setNoDelay(true)
   client.log = function (text) {
     if (config.Server.Debug) {
-      // disabled cuz we need privacy bruh:
-      //return console.log(`[${this.remoteAddress.split(':').slice(-1)}]    ${text}`)
-
-      return console.log(`[ACS]    ${text}`)
+      if (config.Server.StreamerMode) {
+        return console.log(`[ACS]    ${text}`)
+      }
+      else {
+        return console.log(`[${this.remoteAddress.split(':').slice(-1)}]    ${text}`)
+      }
     }
     else
     {
