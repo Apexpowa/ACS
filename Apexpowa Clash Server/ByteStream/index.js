@@ -30,6 +30,18 @@ class ByteStream {
                     this.buffer[this.offset++])))
   }
 
+  /**
+   * Reading Little-Endian Int from Bytes
+   * @returns {Number} Little-Endian Int
+   */
+  readIntLE() {
+    this.bitOffset = 0;
+    return (this.buffer[this.offset++] |
+            (this.buffer[this.offset++] << 8) |
+              (this.buffer[this.offset++] << 16) |
+                (this.buffer[this.offset++] << 24));
+  }
+
   skip (len) {
     this.bitOffset += len
   }
@@ -67,6 +79,19 @@ class ByteStream {
     this.buffer[this.offset++] = (value >> 16)
     this.buffer[this.offset++] = (value >> 8)
     this.buffer[this.offset++] = (value)
+  }
+
+  /**
+   * Writing value to Bytes as Little-Endian Int
+   * @param {Number} value Your value to write.
+   */
+  writeIntLE(value) {
+    this.bitOffset = 0;
+    this.ensureCapacity(4);
+    this.buffer[this.offset++] = (value);
+    this.buffer[this.offset++] = (value >> 8);
+    this.buffer[this.offset++] = (value >> 16);
+    this.buffer[this.offset++] = (value >> 24);
   }
 
   /**
@@ -205,10 +230,16 @@ class ByteStream {
 
   /**
    * Reading Boolean from Bytes
-   * @returns { Boolean } Boolean (`true|false`)
+   * @returns { Boolean } Boolean (`true/false`)
    */
-  readBoolean(){
-    return this.readVInt() >= 1
+  readBoolean () {
+    const BitOffset = this.bitOffset
+    const Offset = this.offset + (8 - BitOffset >> 3)
+    
+    this.offset = Offset
+    this.bitOffset = BitOffset + 1 & 7
+
+    return (1 << (BitOffset & 7) & this.buffer[Offset - 1]) != 0
   }
 
   /**
@@ -227,21 +258,23 @@ class ByteStream {
     this.offset += buf.length
   }
 
-  writeCompressibleString (value) {
-    const data = Buffer.from(value, 'utf8')
-    const compressed = zlib.deflateSync(data, { level: zlib.constants.Z_BEST_COMPRESSION })
-
-    this.writeBoolean(true)
-    /*this.writeInt(compressed.length + 4)
-    this.writeHex('FFFF0000')*/
-    this.writeBytes(compressed, compressed.length)
-  }
-
   /**
    * Writing value to Bytes as String (`You can just use writeString()`)
    * @param {String} value Your value to write.
    */
   writeStringReference = this.writeString
+
+  /**
+   * Compress string to ByteStream
+   * 
+   * @param { ByteStream } stream ByteStream class instance. In case, if instance is invalid, throws error
+   */
+  writeCompressedString (value) {
+    const compressedString = zlib.deflateSync(value)
+    this.writeInt(compressedString.length + 4)
+    this.writeIntLE(value.length)
+    this.writeBytesWithoutLength(compressedString)
+  }
 
   /**
    * Writing value to Bytes as LongLong (`commonly isn't used`)
@@ -315,6 +348,29 @@ class ByteStream {
     }
 
     this.writeInt(-1)
+  }
+
+  /**
+    * Reading ByteArray from Bytes 
+    * @returns { Buffer }
+    */
+  readBytes () {
+    const length = this.readBytesLength()
+
+    const buffer = this.buffer.slice(this.offset, this.offset + length)
+    this.offset += length
+    return buffer
+  }
+
+  /**
+   * Writing value to Bytes as ByteArray without ByteArray length
+   * @param {Buffer} buffer Your buffer to write.
+   */
+  writeBytesWithoutLength (buffer) {
+    if (buffer != null) {
+      this.buffer = Buffer.concat([this.buffer, buffer])
+      this.offset += buffer.length
+    }
   }
 
   writeHex (hex) {

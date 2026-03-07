@@ -44,7 +44,7 @@ module.exports = class DataBase {
                                 lowID: 'desc'
                             })
                             .then(lastPlayer => {
-                                generateToken(28, newToken => {
+                                generateToken(14, newToken => {
                                     this.mongoosePlayers.create({
                                         highID: 0,
                                         lowID: lastPlayer ? (lastPlayer.lowID + 1) : 1,

@@ -1,6 +1,6 @@
 const fs = require("fs")
 const PiranhaMessage = require('../../PiranhaMessage')
-const NpcAvatar = require('../../../Logic/NpcAvatar')
+const ClientAvatar = require('../../../Logic/ClientAvatar')
 
 const startingHome = JSON.parse(
   fs.readFileSync("Gamefiles/level/tutorial_npc.json", "utf8")
@@ -31,7 +31,7 @@ class NpcDataMessage extends PiranhaMessage {
 
     // Avatar
     {
-      const avatar = new NpcAvatar()
+      const avatar = new ClientAvatar()
       avatar.encode(this, this.client.player)
     }
 

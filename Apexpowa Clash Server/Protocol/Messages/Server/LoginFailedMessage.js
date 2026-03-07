@@ -15,7 +15,7 @@ class LoginFailedMessage extends PiranhaMessage {
     // 9 = Connection Error
     // 10 = Maintenance
     // 11 = Banned
-    this.writeByte(this.errorCode) // ErrorCode
+    this.writeInt(this.errorCode) // ErrorCode
     this.writeString('') // Fingerprint
     this.writeString(null)
     this.writeString('') // Content URL

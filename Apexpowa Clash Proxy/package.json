@@ -12,9 +12,7 @@
   "dependencies": {
     "figlet": "^1.9.4",
     "fs": "^0.0.1-security",
-    "mongoose": "^9.1.4",
-    "net": "^1.0.2",
-    "simple-rc4": "^0.0.1-b"
+    "net": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^8.0.1",

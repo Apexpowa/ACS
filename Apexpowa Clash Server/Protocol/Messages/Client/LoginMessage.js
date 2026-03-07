@@ -7,6 +7,8 @@ const AllianceFullEntryMessage = require('../Server/AllianceFullEntryMessage')
 const WarMapMessage = require('../Server/WarMapMessage')
 const AllianceAllEntryMessage = require('../Server/AllianceAllEntryMessage')
 
+const config = require('../../../config.json')
+
 class LoginMessage extends PiranhaMessage {
   constructor (bytes, client) {
     super(bytes)
@@ -22,28 +24,34 @@ class LoginMessage extends PiranhaMessage {
     this.data.LowID = this.readInt()
     this.data.Token = this.readString()
     this.data.Major = this.readInt()
+    this.data.Minor = this.readInt()
     this.data.Build = this.readInt()
-    this.data.Content = this.readInt()
 
     //console.log(this.data)
   }
 
   async process () {
+    if (this.data.Major !== parseInt(config.Server.Version.split('.')[0]) || this.data.Build !== parseInt(config.Server.Version.split('.')[1])) {
+      await new LoginFailedMessage(this.client, 3, `Your version doesn't match the server version.\n Client Version: ${this.data.Major}.${this.data.Build}\n Server Version: ${config.Server.Version}`).send()
+      return
+    }
+
     this.client.userObject = Object.assign({}, {
       highID: this.data.HighID,
       lowID: this.data.LowID,
       token: this.data.Token
     })
+    this.client.playerData = this.data
     this.client.mongoose.getPlayer(this.client, async (err, player) => {
       this.client.player = player
       await new LoginOkMessage(this.client).send()
       await new OwnHomeDataMessage(this.client).send()
-      await new AvatarStreamMessage(this.client).send()
+      //await new AvatarStreamMessage(this.client).send()
 
       if (this.client.player.inClan === 1) {
-        await new AllianceFullEntryMessage(this.client).send()
+        //await new AllianceFullEntryMessage(this.client).send()
         //await new WarMapMessage(this.client).send()
-        await new AllianceAllEntryMessage(this.client).send()
+        //await new AllianceAllEntryMessage(this.client).send()
       }
     })
   }

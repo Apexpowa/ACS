@@ -1,6 +1,6 @@
 {
   "name": "apexpowa_clash_server",
-  "version": "6.253",
+  "version": "1.0.1",
   "description": "A next-generation Clash of Clans private server emulator written in JavaScript.",
   "main": "index.js",
   "scripts": {
