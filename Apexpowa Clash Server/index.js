@@ -22,14 +22,9 @@ server.on('connection', async (client) => {
     if (config.Server.Debug) {
       if (config.Server.StreamerMode) {
         return console.log(`[ACS]    ${text}`)
-      }
-      else {
+      } else {
         return console.log(`[${this.remoteAddress.split(':').slice(-1)}]    ${text}`)
       }
-    }
-    else
-    {
-      return console.log(`[ACS]    ${text}`)
     }
   }
 
