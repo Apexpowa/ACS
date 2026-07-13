@@ -31,8 +31,10 @@ class LoginMessage extends PiranhaMessage {
   }
 
   async process () {
-    if (this.data.Major !== parseInt(config.Server.Version.split('.')[0]) || this.data.Build !== parseInt(config.Server.Version.split('.')[1])) {
-      await new LoginFailedMessage(this.client, 3, `Your version doesn't match the server version.\n Client Version: ${this.data.Major}.${this.data.Build}\n Server Version: ${config.Server.Version}`).send()
+    const clientVersion = `${this.data.Major}.${this.data.Build}`.trim()
+    const versions = config.Server.Versions.map(v => String(v).trim())
+    if (!versions.includes(clientVersion)) {
+      await new LoginFailedMessage(this.client, 3, `Your version doesn't match the server version.\nClient Version: ${clientVersion}\nSupported Versions: ${versions.join(", ")}`).send()
       return
     }
 
