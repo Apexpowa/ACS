@@ -95,7 +95,7 @@ console.log("This program is made by the Apexpowa team.")
 console.log(`You can find the source at https://github.com/Apexpowa/ACS !`)
 console.log(`Don't forget to visit https://github.com/Apexpowa/ACS daily for updates!`)
 console.log()
-console.log(`ACS ${config.Server.Version} is now starting...`)
+console.log(`ACS ${config.Server.Versions} is now starting...`)
 mongooseInstance.connect(isSuccess => {
   if (isSuccess) {
     server.once('listening', () => {
