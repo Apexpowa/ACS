@@ -25,7 +25,7 @@ class LogicUnlockBuildingCommand {
 
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
-    await self.client.player.save()
+    self.client.player.save()
   }
 }
 

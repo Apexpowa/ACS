@@ -11,13 +11,11 @@ class LogicEndCombatCommand {
     }
     self.client.player.league = LeagueUtils.getLeagueByScore(self.client.player.trophies)
 
-    self.client.log(
-      `Battle surrendered! Trophies: ${self.client.player.trophies}, League: ${self.client.player.league}`
-    )
+    self.client.log(`Battle surrendered! Trophies: ${self.client.player.trophies}, League: ${self.client.player.league}`)
 
     self.client.player.markModified('trophies')
     self.client.player.markModified('league')
-    await self.client.player.save()
+    self.client.player.save()
   }
 }
 

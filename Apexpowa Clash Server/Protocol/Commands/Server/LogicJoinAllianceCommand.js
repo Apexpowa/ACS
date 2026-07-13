@@ -18,7 +18,7 @@ class LogicJoinAllianceCommand {
       self.writeInt(1)
       self.writeInt(-1)
 
-      await self.client.player.save()
+      self.client.player.save()
     }
   }
 }

@@ -5,12 +5,15 @@ const LogicStartUnlockingBuildingCommand = require('../../Commands/Client/LogicS
 const LogicMoveBuildingCommand = require('../../Commands/Client/LogicMoveBuildingCommand')
 const LogicUpgradeBuildingCommand = require('../../Commands/Client/LogicUpgradeBuildingCommand')
 const LogicBuyBuildingCommand = require('../../Commands/Client/LogicBuyBuildingCommand')
+const LogicSellBuildingCommand = require('../../Commands/Client/LogicSellBuildingCommand')
 const LogicClearObstacleCommand = require('../../Commands/Client/LogicClearObstacleCommand')
 const LogicTrainUnitCommand = require('../../Commands/Client/LogicTrainUnitCommand')
 const LogicBuyTrapCommand = require('../../Commands/Client/LogicBuyTrapCommand')
 const LogicBuyDecoCommand = require('../../Commands/Client/LogicBuyDecoCommand')
 const LogicBuyResourceCommand = require('../../Commands/Client/LogicBuyResourceCommand')
 const LogicUnlockBuildingCommand = require('../../Commands/Client/LogicUnlockBuildingCommand')
+const LogicUpgradeHeroCommand = require('../../Commands/Client/LogicUpgradeHeroCommand')
+const LogicBuyHeroCommand = require('../../Commands/Client/LogicBuyHeroCommand')
 const LogicNewShopItemsSeenCommand = require('../../Commands/Client/LogicNewShopItemsSeenCommand')
 const LogicMoveMultipleBuildingsCommand = require('../../Commands/Client/LogicMoveMultipleBuildingsCommand')
 const LogicLeagueNotificationsSeenCommand = require('../../Commands/Client/LogicLeagueNotificationsSeenCommand')
@@ -47,6 +50,7 @@ class EndClientTurnMessage extends PiranhaMessage {
       500: LogicStartUnlockingBuildingCommand,
       501: LogicMoveBuildingCommand,
       502: LogicUpgradeBuildingCommand,
+      503: LogicSellBuildingCommand,
       504: LogicBuyBuildingCommand,
       507: LogicClearObstacleCommand,
       508: LogicTrainUnitCommand,
@@ -54,6 +58,8 @@ class EndClientTurnMessage extends PiranhaMessage {
       512: LogicBuyDecoCommand,
       518: LogicBuyResourceCommand,
       520: LogicUnlockBuildingCommand,
+      527: LogicUpgradeHeroCommand,
+      528: LogicBuyHeroCommand,
       532: LogicNewShopItemsSeenCommand,
       533: LogicMoveMultipleBuildingsCommand,
       538: LogicLeagueNotificationsSeenCommand,

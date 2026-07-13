@@ -36,23 +36,23 @@ class PiranhaMessage extends ByteStream {
    */
   encode () {
 
-  };
+  }
 
   /**
    * Decode function for client packets.
    * 
    * Need to use `read` functions
    */
-  decode () {
+  async decode () {
 
-  };
+  }
 
   /**
    * Process function for client packets.
    * 
    * Your code here.
    */
-  process () {
+  async process () {
 
   }
 }

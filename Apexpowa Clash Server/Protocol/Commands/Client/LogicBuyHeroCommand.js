@@ -1,6 +1,6 @@
 const AvailableServerCommandMessage = require('../../Messages/Server/AvailableServerCommandMessage')
 
-class LogicBuyBuildingCommand {
+class LogicBuyHeroCommand {
   async decode (self) {
     this.data = {}
 
@@ -17,4 +17,4 @@ class LogicBuyBuildingCommand {
   }
 }
 
-module.exports = LogicBuyBuildingCommand
+module.exports = LogicBuyHeroCommand

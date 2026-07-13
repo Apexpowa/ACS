@@ -35,11 +35,11 @@ class ByteStream {
    * @returns {Number} Little-Endian Int
    */
   readIntLE() {
-    this.bitOffset = 0;
+    this.bitOffset = 0
     return (this.buffer[this.offset++] |
             (this.buffer[this.offset++] << 8) |
               (this.buffer[this.offset++] << 16) |
-                (this.buffer[this.offset++] << 24));
+                (this.buffer[this.offset++] << 24))
   }
 
   skip (len) {
@@ -86,12 +86,12 @@ class ByteStream {
    * @param {Number} value Your value to write.
    */
   writeIntLE(value) {
-    this.bitOffset = 0;
-    this.ensureCapacity(4);
-    this.buffer[this.offset++] = (value);
-    this.buffer[this.offset++] = (value >> 8);
-    this.buffer[this.offset++] = (value >> 16);
-    this.buffer[this.offset++] = (value >> 24);
+    this.bitOffset = 0
+    this.ensureCapacity(4)
+    this.buffer[this.offset++] = (value)
+    this.buffer[this.offset++] = (value >> 8)
+    this.buffer[this.offset++] = (value >> 16)
+    this.buffer[this.offset++] = (value >> 24)
   }
 
   /**
@@ -374,8 +374,8 @@ class ByteStream {
   }
 
   writeHex (hex) {
-    let buffer = Buffer.from(hex, 'hex');
-
+    hex = hex.replace(/[-\s]/g, '')
+    const buffer = Buffer.from(hex, 'hex')
     if (buffer != null) {
       this.buffer = Buffer.concat([this.buffer, buffer])
       this.offset += buffer.length
@@ -401,7 +401,7 @@ class ByteStream {
    * Send a packet to the server.
    */
   send () {
-    if (this.id < 20000) return;
+    if (this.id < 20000) return
     this.encode()
 
     this.buffer = this.client.crypto.encrypt(this.buffer)

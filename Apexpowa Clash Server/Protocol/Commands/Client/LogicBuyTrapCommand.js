@@ -13,12 +13,8 @@ class LogicBuyTrapCommand {
 
   async process(self) {
     let village = self.client.player.village
-
     village = JSON.parse(village)
-
-    if (!Array.isArray(village.traps)) {
-      village.traps = []
-    }
+    if (!Array.isArray(village.traps)) village.traps = []
 
     const trap = {
       data: this.data.TrapID,
@@ -28,11 +24,9 @@ class LogicBuyTrapCommand {
     }
     village.traps.push(trap)
 
-    self.client.log(`Placed trap ${trap.data} at x${trap.x}, y${trap.y}`)
-
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
-    await self.client.player.save()
+    self.client.player.save()
   }
 }
 

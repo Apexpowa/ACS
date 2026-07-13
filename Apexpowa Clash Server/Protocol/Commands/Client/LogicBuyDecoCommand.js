@@ -13,12 +13,8 @@ class LogicBuyDecoCommand {
 
   async process(self) {
     let village = self.client.player.village
-
     village = JSON.parse(village)
-
-    if (!Array.isArray(village.decos)) {
-      village.decos = []
-    }
+    if (!Array.isArray(village.decos)) village.decos = []
 
     const decoration = {
       data: this.data.DecorationID,
@@ -27,11 +23,9 @@ class LogicBuyDecoCommand {
     }
     village.decos.push(decoration)
 
-    self.client.log(`Placed decoration ${decoration.data} at x${decoration.x}, y${decoration.y}`)
-
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
-    await self.client.player.save()
+    self.client.player.save()
   }
 }
 

@@ -14,13 +14,9 @@ class LogicStartUnlockingBuildingCommand {
 
   async process (self) {
     let village = self.client.player.village
-
     village = JSON.parse(village)
-
-    if (!Array.isArray(village.buildings)) {
-      village.buildings = []
-    }
-
+    if (!Array.isArray(village.buildings)) village.buildings = []
+    
     const building = {
       data: this.data.BuildingID,
       lvl: 0,
@@ -28,8 +24,6 @@ class LogicStartUnlockingBuildingCommand {
       y: this.data.PositionY
     }
     village.buildings.push(building)
-
-    self.client.log(`Placed building ${building.data} at x${building.x}, y${building.y}`)
 
     if (this.data.BuildingID === 1000022) {
       if (self.client.player.heroes === 0) {
@@ -46,7 +40,7 @@ class LogicStartUnlockingBuildingCommand {
 
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
-    await self.client.player.save()
+    self.client.player.save()
   }
 }
 

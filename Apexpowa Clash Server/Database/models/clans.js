@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 //Creating schema
 const clansSchema = new Schema({
@@ -53,4 +53,4 @@ const clansSchema = new Schema({
     }
 })
 
-mongoose.model('clans', clansSchema);
+mongoose.model('clans', clansSchema)

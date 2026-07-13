@@ -1,3 +1,5 @@
+const Utils = require('../../../Utilities/Utils')
+
 class LogicMoveBuildingCommand {
   async decode (self) {
     this.data = {}
@@ -12,40 +14,40 @@ class LogicMoveBuildingCommand {
 
   async process (self) {
     let village = JSON.parse(self.client.player.village)
-
     if (!Array.isArray(village.buildings)) village.buildings = []
     if (!Array.isArray(village.decos)) village.decos = []
     if (!Array.isArray(village.traps)) village.traps = []
-
     const id = this.data.BuildingID
+    const instanceID = Utils.getInstanceID(id)
     const x = this.data.PositionX
     const y = this.data.PositionY
+    let moved = false
 
-    let building = village.buildings.find(b => b.id === id || b.data === id)
+    const building = village.buildings[instanceID]
     if (building) {
       building.x = x
       building.y = y
-      self.client.player.village = JSON.stringify(village)
-      self.client.player.markModified('village')
-      await self.client.player.save()
+      moved = true
     }
-
-    let deco = village.decos.find(d => d.id === id || d.data === id)
+    const deco = village.decos[instanceID]
     if (deco) {
       deco.x = x
       deco.y = y
-      self.client.player.village = JSON.stringify(village)
-      self.client.player.markModified('village')
-      await self.client.player.save()
+      moved = true
     }
-
-    let trap = village.traps.find(t => t.id === id || t.data === id)
+    const trap = village.traps[instanceID]
     if (trap) {
       trap.x = x
       trap.y = y
+      moved = true
+    }
+
+    if (moved) {
       self.client.player.village = JSON.stringify(village)
       self.client.player.markModified('village')
-      await self.client.player.save()
+      self.client.player.save()
+    } else {
+      console.log(id, ' not found.')
     }
   }
 }

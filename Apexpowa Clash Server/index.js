@@ -1,7 +1,5 @@
 console.clear()
 
-const figlet = require('figlet')
-
 const net = require('net')
 const { execSync } = require('child_process')
 const os = require('os')
@@ -13,7 +11,7 @@ const PORT = config.Server.Port
 
 const Crypto = require("./Crypto")
 
-let mongooseInstance = require('./DataBase/mongoose')
+let mongooseInstance = require('./Database/mongoose')
 mongooseInstance = new mongooseInstance()
 
 server.on('connection', async (client) => {

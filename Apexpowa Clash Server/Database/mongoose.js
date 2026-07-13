@@ -1,32 +1,32 @@
-const mongoose = require('mongoose');
-const config = require('../config.json');
+const mongoose = require('mongoose')
+const config = require('../config.json')
 
 const LoginFailedMessage = require('../Protocol/Messages/Server/LoginFailedMessage')
 
-module.exports = class DataBase {
+module.exports = class Database {
     constructor() { }
     connect(isSuccess) {
         mongoose.connect(`mongodb://${config.Database.Password ? `${config.Database.Password}:` : ''}${config.Database.Host}/${config.Database.Name}`)
             .then(() => {
-                require('./models/players');
-                this.mongoosePlayers = mongoose.model('players');
-                require('./models/clans');
-                this.mongooseClans = mongoose.model('clans');
-                isSuccess(true);
+                require('./models/players')
+                this.mongoosePlayers = mongoose.model('players')
+                require('./models/clans')
+                this.mongooseClans = mongoose.model('clans')
+                isSuccess(true)
             })
             .catch(function (error) {
-                console.log(error);
-                isSuccess(false);
-            });
+                console.log(error)
+                isSuccess(false)
+            })
     }
     disconnect() {
         mongoose.disconnect()
             .then(result => {
-                console.log(`Successfully disconnected from the database`, result);
+                console.log(`Successfully disconnected from the database`, result)
             })
             .catch(error => {
-                console.log(`An error occoured disconnecting from the database`, error);
-            });
+                console.log(`An error occoured disconnecting from the database`, error)
+            })
     }
     getPlayer(device, callback) {
         this.mongoosePlayers.findOne({
@@ -36,7 +36,7 @@ module.exports = class DataBase {
         })
             .then(player => {
                 if (player) {
-                    callback(false, player);
+                    callback(false, player)
                 } else {
                    //if (device.userObject.token === '') {
                         this.mongoosePlayers.findOne({})
@@ -51,10 +51,10 @@ module.exports = class DataBase {
                                         token: newToken
                                     })
                                         .then(createdPlayer => {
-                                            callback(false, createdPlayer);
-                                        });
-                                });
-                            });
+                                            callback(false, createdPlayer)
+                                        })
+                                })
+                            })
                    /*}
                     else {
                         new LoginFailedMessage(this.client, 3, 'Clear your app data and try again!').send()
@@ -62,8 +62,8 @@ module.exports = class DataBase {
                 }
             })
             .catch(error => {
-                console.log(`An error occoured fetching a player from the database`, error);
-            });
+                console.log(`An error occoured fetching a player from the database`, error)
+            })
     }
     getClan(device, callback) {
         if (device.player.inClan) {
@@ -73,10 +73,10 @@ module.exports = class DataBase {
             })
                 .then(clan => {
                     if (clan) {
-                        console.log("Clan found!");
-                        callback(clan);
+                        console.log("Clan found!")
+                        callback(clan)
                     } else {
-                        console.log("Clan not found!");
+                        console.log("Clan not found!")
                         this.mongooseClans.findOne({})
                             .sort({
                                 lowID: 'desc'
@@ -87,16 +87,16 @@ module.exports = class DataBase {
                                     lowID: lastClan ? (lastClan.lowID + 1) : 1
                                 })
                                     .then(createdClan => {
-                                        callback(false, createdClan);
-                                    });
-                            });
+                                        callback(false, createdClan)
+                                    })
+                            })
                     }
                 })
                 .catch(error => {
-                    console.log(`An error occoured fetching a clan from the database`, error);
-                });
+                    console.log(`An error occoured fetching a clan from the database`, error)
+                })
         } else {
-            console.log(`Player doesn't have a clan!`);
+            console.log(`Player doesn't have a clan!`)
         }
     }
     
@@ -136,6 +136,6 @@ module.exports = class DataBase {
 
 function generateToken(n, callback) {
     require('crypto').randomBytes(n, function (err, buffer) {
-        callback(buffer.toString('hex'));
-    });
+        callback(buffer.toString('hex'))
+    })
 }
