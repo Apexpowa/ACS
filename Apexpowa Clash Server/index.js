@@ -78,7 +78,19 @@ server.on('connection', async (client) => {
   })
 })
 
-console.log(figlet.textSync('ACS', {font: 'Bloody'}))
+// https://patorjk.com/software/taag/#p=display&f=Bloody&t=ACS&x=none&v=4&h=4&w=80&we=false
+console.log(`
+ ▄▄▄       ▄████▄    ██████ 
+▒████▄    ▒██▀ ▀█  ▒██    ▒ 
+▒██  ▀█▄  ▒▓█    ▄ ░ ▓██▄   
+░██▄▄▄▄██ ▒▓▓▄ ▄██▒  ▒   ██▒
+ ▓█   ▓██▒▒ ▓███▀ ░▒██████▒▒
+ ▒▒   ▓▒█░░ ░▒ ▒  ░▒ ▒▓▒ ▒ ░
+  ▒   ▒▒ ░  ░  ▒   ░ ░▒  ░ ░
+  ░   ▒   ░        ░  ░  ░  
+      ░  ░░ ░            ░  
+          ░                 
+`)
 console.log("This program is made by the Apexpowa team.")
 console.log(`You can find the source at https://github.com/Apexpowa/ACS !`)
 console.log(`Don't forget to visit https://github.com/Apexpowa/ACS daily for updates!`)
