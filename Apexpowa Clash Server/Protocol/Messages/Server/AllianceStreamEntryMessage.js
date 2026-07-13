@@ -11,7 +11,7 @@ class AllianceStreamEntryMessage extends PiranhaMessage {
 
   async encode () {
     this.writeInt(2) // StreamEntryType
-    this.writeLong(1) // StreamEntryId
+    this.writeLong(Math.floor(Math.random() * 0x7FFFFFFF)) // StreamEntryId // when a db is added, this should be a new msg id instead of the same id to prevent same msg going into the box
     this.writeLong(this.client.player.highID, this.client.player.lowID) // SenderAvatarId
     this.writeLong(this.client.player.highID, this.client.player.lowID) // HomeId
     this.writeString(this.client.player.name) // SenderName
