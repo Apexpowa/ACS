@@ -5,6 +5,7 @@
         "Debug": true,
         "StreamerMode": true,
         "Versions": [
+            6.186,
             6.253
         ]
     },
