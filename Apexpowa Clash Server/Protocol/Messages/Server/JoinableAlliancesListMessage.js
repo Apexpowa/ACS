@@ -9,18 +9,19 @@ class JoinableAlliancesListMessage extends PiranhaMessage {
   }
 
   async encode () {
-    let count = 1
+    const db = this.client.mongoose
+    //const clans = await db.getJoinableClans(20) // TODO: Joinable clans
+    const clans = await db.searchClans('', 20)
 
-    this.writeInt(count)
-
-    {
-      this.writeLong(0, 1) // Id
-      this.writeString('Clashers') // Name
-      this.writeInt(13000000) // Badge
-      this.writeInt(1) // Type
-      this.writeInt(1) // MembersCount
-      this.writeInt(3200) // Score
-      this.writeInt(0) // RequiredScore
+    this.writeInt(clans.length) // AlliancesCount
+    for (const clan of clans) {
+      this.writeLong(clan.highID, clan.lowID) // Id
+      this.writeString(clan.name) // Name
+      this.writeInt(clan.badge) // Badge
+      this.writeInt(clan.type) // Type
+      this.writeInt(clan.members?.length || 0) // MembersCount
+      this.writeInt(clan.trophies) // Score
+      this.writeInt(clan.requiredTrophies) // RequiredScore
     }
   }
 }

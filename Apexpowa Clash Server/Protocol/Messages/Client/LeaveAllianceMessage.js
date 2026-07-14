@@ -1,5 +1,6 @@
 const PiranhaMessage = require('../../PiranhaMessage')
 const LeaveAllianceOkMessage = require('../Server/LeaveAllianceOkMessage')
+const OutOfSyncMessage = require('../Server/OutOfSyncMessage')
 
 class LeaveAllianceMessage extends PiranhaMessage {
   constructor (bytes, client) {
@@ -12,7 +13,21 @@ class LeaveAllianceMessage extends PiranhaMessage {
   async decode () {}
 
   async process () {
-    await new LeaveAllianceOkMessage(this.client).send()
+    const player = this.client.player
+    const db = this.client.mongoose
+
+    if (!player.inClan) {
+      await new OutOfSyncMessage(this.client).send() // Not in a clan
+      return
+    }
+
+    try {
+      await db.leaveClan(player)
+      await new LeaveAllianceOkMessage(this.client).send()
+    } catch (e) {
+      console.error(e)
+      await new OutOfSyncMessage(this.client).send()
+    }
   }
 }
 

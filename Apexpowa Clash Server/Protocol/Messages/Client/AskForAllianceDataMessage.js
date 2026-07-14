@@ -9,10 +9,16 @@ class AskForAllianceDataMessage extends PiranhaMessage {
     this.version = 1
   }
 
-  async decode () {}
+  async decode () {
+    this.data = {}
+
+    this.data.AllianceId = this.readLong()
+
+    console.log(this.data)
+  }
 
   async process () {
-    await new AllianceDataMessage(this.client).send()
+    await new AllianceDataMessage(this.client, this.data.AllianceId).send()
   }
 }
 

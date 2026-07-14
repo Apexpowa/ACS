@@ -26,7 +26,14 @@ class SearchAlliancesMessage extends PiranhaMessage {
   }
 
   async process () {
-    await new AllianceListMessage(this.client, this.data.SearchString).send()
+    const filters = {
+      locationInstanceID: this.data.AllianceOrigin,
+      minimumMembers: this.data.MinimumAllianceMembers,
+      maximumMembers: this.data.MaximumAllianceMembers,
+      minimumRequiredTrophies: this.data.AllianceScore,
+      canJoin: this.data.ShowOnlyJoinableAlliances === 1
+    }
+    await new AllianceListMessage(this.client, this.data.SearchString, filters).send()
   }
 }
 

@@ -1,5 +1,4 @@
 const PiranhaMessage = require('../../PiranhaMessage')
-const LeagueUtils = require('../../../Utilities/LeagueUtils')
 
 class AvatarLocalRankingListMessage extends PiranhaMessage {
   constructor (client) {
@@ -10,42 +9,44 @@ class AvatarLocalRankingListMessage extends PiranhaMessage {
   }
 
   async encode () {
-    let count = 1
+    const db = this.client.mongoose
+    const players = await db.getLocalPlayers(200)
+    const clanCache = {}
 
-    this.writeInt(count)
-
+    this.writeInt(players.length) // PlayerCount
+    for (var i = 0; i < players.length; i++)
     {
-      this.writeLong(0, 1) // HighID, LowID
-      this.writeString('Chief') // Name
-      this.writeInt(count)
-      this.writeInt(3200) // Score
+      const player = players[i]
+
+      this.writeLong(player.highID, player.lowID) // HighID, LowID
+      this.writeString(player.name) // Name
+      this.writeInt(i + 1)
+      this.writeInt(player.trophies) // Score
       this.writeInt(200)
 
       // AvatarRankingEntry
       {
-        this.writeInt(1) // Level
-        this.writeInt(0) // AttackWinCount
-        this.writeInt(0) // AttackLoseCount
-        this.writeInt(0) // DefenseWinCount
-        this.writeInt(0) // DefenseLoseCount
-        this.writeInt(LeagueUtils.getLeagueByScore(3200)) // LeagueType
+        this.writeInt(player.level) // Level
+        this.writeInt(player.attackWinCount) // AttackWinCount
+        this.writeInt(player.attackLoseCount) // AttackLoseCount
+        this.writeInt(player.defendWinCount) // DefenseWinCount
+        this.writeInt(player.defendLoseCount) // DefenseLoseCount
+        this.writeInt(player.league) // LeagueType
 
         this.writeString('US') // Country
-        this.writeLong(0, 1) // Home Id
+        this.writeLong(player.highID, player.lowID) // Home Id
 
         // Alliance
         {
-          this.writeBoolean(true)
-          this.writeLong(0,1) // HighID, LowID
+          this.writeBoolean(false)
+          /*this.writeLong(0,1) // HighID, LowID
           this.writeString('Clashers') // Name
-          this.writeInt(13000000) // Badge
+          this.writeInt(13000000) // Badge*/
         }
       }
-
-      count += 1
     }
 
-    this.writeInt(count)
+    this.writeInt(players.length)
   }
 }
 

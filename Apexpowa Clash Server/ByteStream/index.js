@@ -400,9 +400,9 @@ class ByteStream {
   /**
    * Send a packet to the server.
    */
-  send () {
+  async send () {
     if (this.id < 20000) return
-    this.encode()
+    await this.encode()
 
     this.buffer = this.client.crypto.encrypt(this.buffer)
 

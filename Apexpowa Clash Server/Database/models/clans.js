@@ -3,11 +3,11 @@ const Schema = mongoose.Schema
 
 //Creating schema
 const clansSchema = new Schema({
-    highID: {
+    highID:{
         type: Number,
         required: true
     },
-    lowID: {
+    lowID:{
         type: Number,
         required: true
     },
@@ -17,27 +17,31 @@ const clansSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        default: ''
     },
-    trophies: {
+    trophies:{
         type: Number,
         default: 0
     },
-    requiredTrophies: {
+    requiredTrophies:{
         type: Number,
         default: 0
     },
-    type: {
-        type: Number,
-        default: 0
-    },
-    badge: {
+    badge:{
         type: Number,
         default: 13000000
     },
-    level: {
+    avatarID:{
         type: Number,
-        default: 1
+        default: 0
+    },
+    type:{
+        type: Number,
+        default: 0  // 0 = Open, 1 = Invite Only, 2 = Closed
+    },
+    location:{
+        type: Number,
+        default: 0 // Global
     },
     warFrequency: {
         type: Number,
@@ -50,6 +54,12 @@ const clansSchema = new Schema({
     members: {
         type: Array,
         default: []
+        // Each member: { highID, lowID, name, role, trophies, level, arena, donated, donationsReceived }
+    },
+    messages: {
+        type: Array,
+        default: []
+        // Each message: { id, senderHighID, senderLowID, senderName, senderRole, message, timestamp }
     }
 })
 

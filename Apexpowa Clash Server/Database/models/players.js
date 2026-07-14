@@ -144,7 +144,21 @@ const playersSchema = new Schema({
         ClanLowID: {
             type: Number,
             default: 1
+        },
+        ClanRole: {
+            type: Number,
+            default: 0
         }
+    },
+    army: {
+        type: Array,
+        default: []
+        // Each unit: { unitID, count }
+    },
+    spells: {
+        type: Array,
+        default: []
+        // Each spell: { unitID, count }
     }
 })
 

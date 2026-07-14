@@ -62,12 +62,24 @@ class ClientAvatar {
       self.writeInt(3000003) // Dark Elixir ID
       self.writeInt(player.darkMana) // Dark Elixir Count
     }
-    self.writeInt(1) //array 3, unit slot data
+    self.writeInt(player.army ? player.army.length : 0) //array 3, unit slot data
     {
-      self.writeInt(4000008) // ID
-      self.writeInt(1) // Amount
+      if (player.army && player.army.length > 0) {
+        player.army.forEach(unit => {
+          self.writeInt(unit.unitID) // UnitID
+          self.writeInt(unit.count) // UnitCount
+        })
+      }
     }
-    self.writeInt(0) //array 4, spell slot data
+    self.writeInt(player.spells ? player.spells.length : 0) //array 4, spell slot data
+    {
+      if (player.spells && player.spells.length > 0) {
+        player.spells.forEach(spell => {
+          self.writeInt(spell.unitID) // SpellID
+          self.writeInt(spell.count) // SpellCount
+        })
+      }
+    }
     self.writeInt(0) //array 5, unit upgrade slot
     self.writeInt(0) //array 6, spell upgrade slot
     self.writeInt(player.heroes) //array 7, hero upgrade slot

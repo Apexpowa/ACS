@@ -1,26 +1,28 @@
 const PiranhaMessage = require('../../PiranhaMessage')
 
 class GlobalChatLineMessage extends PiranhaMessage {
-  constructor (client, message) {
+  constructor (client, entry) {
     super()
     this.id = 24715
     this.client = client
     this.version = 1
-    this.message = message
+    this.entry = entry
   }
 
   async encode () {
-    this.writeString(this.message) // Message
-    this.writeString(this.client.player.name) // Name
-    this.writeInt(this.client.player.level) // Level
-    this.writeLong(this.client.player.highID, this.client.player.lowID) // HighID, LowID
-    this.writeLong(this.client.player.highID, this.client.player.lowID) // HighID, LowID
-    
-    if (this.client.player.inClan === 1) {
-      this.writeByte(1) // IsInAlliance
-      this.writeLong(this.client.player.clan.ClanHighID, this.client.player.clan.ClanLowID) // HighID, LowID
-      this.writeString('Clashers') // Name
-      this.writeInt(13000000) // Badge
+    this.writeString(this.entry.message) // Message
+    this.writeString(this.entry.name) // Name
+    this.writeInt(this.entry.level) // Level
+    this.writeLong(this.entry.highID, this.entry.lowID) // ID
+    this.writeLong(this.entry.highID, this.entry.lowID) // ID
+
+    if (this.entry.inClan) {
+      this.writeByte(1)
+      this.writeLong(this.entry.clan.ClanHighID, this.entry.clan.ClanLowID)
+      this.writeString(this.entry.clan.name)
+      this.writeInt(this.entry.clan.badge)
+    } else {
+      this.writeByte(0)
     }
   }
 }

@@ -14,17 +14,15 @@ class AvailableServerCommandMessage extends PiranhaMessage {
   async encode () {
     var commands = {
       1: LogicJoinAllianceCommand,
-      3: LogicChangeAvatarNameCommand,
+      3: LogicChangeAvatarNameCommand
     }
 
     if (this.commandID in commands) {
       const command = new commands[this.commandID]()
-
       this.writeInt(this.commandID)
       await command.encode(this)
       this.client.log(`Gotcha ${this.commandID} (${command.constructor.name}) packet! `)
-    }
-    else {
+    } else {
       this.client.log(`Gotcha undefined ${this.commandID} packet!`)
     }
   }

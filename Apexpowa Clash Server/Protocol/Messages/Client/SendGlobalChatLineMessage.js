@@ -1,6 +1,8 @@
 const PiranhaMessage = require('../../PiranhaMessage')
 const GlobalChatLineMessage = require('../Server/GlobalChatLineMessage')
 const VisitedHomeDataMessage = require('../Server/VisitedHomeDataMessage')
+const GlobalChatMessages = require('../../../Core/GlobalChatMessages')
+const GlobalChatManager = require('../../../Core/GlobalChatManager')
 
 class SendGlobalChatLineMessage extends PiranhaMessage {
   constructor (bytes, client) {
@@ -52,7 +54,19 @@ class SendGlobalChatLineMessage extends PiranhaMessage {
       }
     }
     else {
-      await new GlobalChatLineMessage(this.client, this.data.Message).send()
+      const entry = {
+        region: 'US',
+        message: this.data.Message,
+        name: this.client.player.name,
+        level: this.client.player.level,
+        highID: this.client.player.highID,
+        lowID: this.client.player.lowID,
+        inClan: this.client.player.inClan === 1,
+        clan: this.client.player.clan,
+        timestamp: Date.now()
+      }
+      GlobalChatMessages.add(entry)
+      await GlobalChatManager.process(entry)
     }
   }
 }

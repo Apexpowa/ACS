@@ -9,25 +9,24 @@ class AllianceRankingListMessage extends PiranhaMessage {
   }
 
   async encode () {
-    let count = 1
+    const db = this.client.mongoose
+    const clans = await db.getTopClans(200)
 
-    this.writeInt(count)
+    this.writeInt(clans.length) // AlliancesCount
 
-    {
-      this.writeLong(0, 1) // HighID, LowID
-      this.writeString('Clashers') // Name
-      this.writeInt(count)
-      this.writeInt(3200) // Score
+    for (let i = 0; i < clans.length; i++) {
+      const clan = clans[i]
+
+      this.writeLong(clan.highID, clan.lowID) // HighID, LowID
+      this.writeString(clan.name) // Name
+      this.writeInt(i + 1)
+      this.writeInt(clan.trophies || 0) // Score
       this.writeInt(200)
 
       // AllianceRankingEntry
       {
-        this.writeInt(13000000) // Badge
-        this.writeInt(1) // MemberCount
-      }
-
-      if (count >= 199) {
-        return
+        this.writeInt(clan.badge) // Badge
+        this.writeInt(clan.members?.length) // MemberCount
       }
     }
 

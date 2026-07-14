@@ -1,65 +1,80 @@
 const PiranhaMessage = require('../../PiranhaMessage')
-const LeagueUtils = require('../../../Utilities/LeagueUtils')
 
 class AllianceDataMessage extends PiranhaMessage {
-  constructor (client) {
+  constructor (client, allianceId) {
     super()
     this.id = 24301
     this.client = client
     this.version = 1
+    this.AllianceId = allianceId
   }
 
   async encode () {
-    let count = 1
+    const db = this.client.mongoose
+    const clan = await db.getClanByID(this.AllianceId[0], this.AllianceId[1])
+    const clanHighID = clan ? clan.highID : this.AllianceId[0]
+    const clanLowID = clan ? clan.lowID : this.AllianceId[1]
+    const clanName = clan ? clan.name : 'Clashers'
+    const clanBadge = clan ? clan.badge : 1
+    const clanType = clan ? clan.type : 0
+    const clanDesc = clan ? clan.description : ''
+    const clanScore = clan ? clan.trophies : 0
+    const clanReqScore = clan ? clan.requiredTrophies : 0
+    const members = clan ? clan.members : []
+    const memberCount = members.length || 0
+    const location = clan ? clan.location : 0
+
+    //if (!clan) return // if the clan doesnt exist then just return
 
     // AllianceFullEntry
     {
       // AllianceHeaderEntry
       {
-        this.writeLong(0, 1) // HighID, LowID
-        this.writeString('Clashers') // Name
-        this.writeInt(13000000) // Badge
-        this.writeInt(1) // Type
-        this.writeInt(count) // MemberCount
-        this.writeInt(3200) // Score
-        this.writeInt(0) // RequiredScore
+        this.writeLong(clanHighID, clanLowID) // HighID, LowID
+        this.writeString(clanName) // Name
+        this.writeInt(clanBadge) // Badge
+        this.writeInt(clanType) // Type
+        this.writeInt(memberCount) // MemberCount
+        this.writeInt(clanScore) // Score
+        this.writeInt(clanReqScore) // RequiredScore
         this.writeInt(0) // WonWars
         this.writeInt(0) // LostWars
         this.writeInt(0) // DrawWars
         this.writeInt(2000001)
         this.writeInt(0) // WarFrequency
-        this.writeInt(0) // AllianceOrigin
+        this.writeInt(location) // AllianceOrigin
         this.writeInt(0) // AllianceExperience
         this.writeInt(1) // AllianceLevel
       }
 
-      this.writeString('Test description') // Description
+      this.writeString(clanDesc) // Description
       this.writeInt(0x04)
       this.writeByte(1)
       this.writeInt(0x03)
       this.writeInt(0x0008A5DF)
 
-      this.writeInt(count) // MemberCount
-      for (var i = 0; i < count; i++) {
+      this.writeInt(memberCount) // MemberCount
+      const allianceMembers = [...members].sort((a, b) => (b.trophies || 0) - (a.trophies || 0))
+      allianceMembers.forEach((member, index) => {
         // AllianceMemberEntry
         {
-          this.writeLong(this.client.player.highID, this.client.player.lowID) // HighID, LowID
-          this.writeString(this.client.player.name) // Name
-          this.writeInt(2) // Role (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
-          this.writeInt(this.client.player.level) // Level
-          this.writeInt(LeagueUtils.getLeagueByScore(this.client.player.trophies)) // League
-          this.writeInt(this.client.player.trophies) // Score
-          this.writeInt(200) // Donations
-          this.writeInt(100) // DonationsReceived
+          this.writeLong(member.highID, member.lowID) // HighID, LowID
+          this.writeString(member.name) // Name
+          this.writeInt(member.role) // Role (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
+          this.writeInt(member.level) // Level
+          this.writeInt(member.league) // League
+          this.writeInt(member.trophies) // Score
+          this.writeInt(0) // Donations
+          this.writeInt(0) // DonationsReceived
           this.writeInt(1) // Order
           this.writeInt(1) // PreviousOrder
           this.writeByte(0) // IsNewMember
           this.writeInt(0) // WarCooldown
           this.writeInt(1) // WarOptInStatus
           this.writeByte(1) // HasHomeID
-          this.writeLong(this.client.player.highID, this.client.player.lowID) // HighID, LowID
+          this.writeLong(member.highID, member.lowID) // HighID, LowID
         }
-      }
+      })
     }
   }
 }

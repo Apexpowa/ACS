@@ -14,7 +14,11 @@ const Crypto = require("./Crypto")
 let mongooseInstance = require('./Database/mongoose')
 mongooseInstance = new mongooseInstance()
 
+const PlayerManager = require('./Core/PlayerManager')
+
 server.on('connection', async (client) => {
+  PlayerManager.add(client)
+  
   client.setNoDelay(true)
   client.log = function (text) {
     if (config.Server.Debug) {
@@ -64,11 +68,13 @@ server.on('connection', async (client) => {
   })
 
   client.on('end', async () => {
+    PlayerManager.remove(client)
     return client.log('Client disconnected.')
   })
 
   client.on('error', async error => {
     try {
+      PlayerManager.remove(client)
       client.log('A wild error!')
       console.log(error)
       client.destroy()
