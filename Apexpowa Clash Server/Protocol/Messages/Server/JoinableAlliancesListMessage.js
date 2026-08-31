@@ -22,6 +22,14 @@ class JoinableAlliancesListMessage extends PiranhaMessage {
       this.writeInt(clan.members?.length || 0) // MembersCount
       this.writeInt(clan.trophies) // Score
       this.writeInt(clan.requiredTrophies) // RequiredScore
+      this.writeInt(0) // WonWars
+      this.writeInt(0) // LostWars
+      this.writeInt(0) // DrawWars
+      this.writeInt(2000001)
+      this.writeInt(0) // WarFrequency
+      this.writeInt(clan.location || 0) // AllianceOrigin
+      this.writeInt(0) // AllianceExperience
+      this.writeInt(1) // AllianceLevel
     }
   }
 }

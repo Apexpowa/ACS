@@ -13,15 +13,10 @@ class VisitedHomeDataMessage extends PiranhaMessage {
 
   async encode () {
     this.writeInt(0)
-
-    const someonesHome = new ClientHome()
-    someonesHome.encode(this, this.player)
-    const someonesAvatar = new ClientAvatar()
-    someonesAvatar.encode(this, this.player)
-
+    new ClientHome().encode(this, this.player, 0)
+    new ClientAvatar().encode(this, this.player)
     this.writeByte(1)
-    const avatar = new ClientAvatar()
-    avatar.encode(this, this.client.player)
+    new ClientAvatar().encode(this, this.client.player)
   }
 }
 

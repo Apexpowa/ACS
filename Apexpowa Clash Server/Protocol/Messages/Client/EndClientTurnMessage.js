@@ -12,6 +12,7 @@ const LogicBuyTrapCommand = require('../../Commands/Client/LogicBuyTrapCommand')
 const LogicBuyDecoCommand = require('../../Commands/Client/LogicBuyDecoCommand')
 const LogicBuyResourceCommand = require('../../Commands/Client/LogicBuyResourceCommand')
 const LogicUnlockBuildingCommand = require('../../Commands/Client/LogicUnlockBuildingCommand')
+const LogicBuyShieldCommand = require('../../Commands/Client/LogicBuyShieldCommand')
 const LogicUpgradeHeroCommand = require('../../Commands/Client/LogicUpgradeHeroCommand')
 const LogicBuyHeroCommand = require('../../Commands/Client/LogicBuyHeroCommand')
 const LogicNewShopItemsSeenCommand = require('../../Commands/Client/LogicNewShopItemsSeenCommand')
@@ -19,6 +20,7 @@ const LogicMoveMultipleBuildingsCommand = require('../../Commands/Client/LogicMo
 const LogicLeagueNotificationsSeenCommand = require('../../Commands/Client/LogicLeagueNotificationsSeenCommand')
 const LogicNewsSeenCommand = require('../../Commands/Client/LogicNewsSeenCommand')
 const LogicEditModeShownCommand = require('../../Commands/Client/LogicEditModeShownCommand')
+const LogicStartClanWarCommand = require('../../Commands/Client/LogicStartClanWarCommand')
 const LogicPlaceAttackerCommand = require('../../Commands/Client/LogicPlaceAttackerCommand')
 const LogicEndCombatCommand = require('../../Commands/Client/LogicEndCombatCommand')
 const LogicCastSpellCommand = require('../../Commands/Client/LogicCastSpellCommand')
@@ -58,6 +60,7 @@ class EndClientTurnMessage extends PiranhaMessage {
       512: LogicBuyDecoCommand,
       518: LogicBuyResourceCommand,
       520: LogicUnlockBuildingCommand,
+      522: LogicBuyShieldCommand,
       527: LogicUpgradeHeroCommand,
       528: LogicBuyHeroCommand,
       532: LogicNewShopItemsSeenCommand,
@@ -65,6 +68,7 @@ class EndClientTurnMessage extends PiranhaMessage {
       538: LogicLeagueNotificationsSeenCommand,
       539: LogicNewsSeenCommand,
       544: LogicEditModeShownCommand,
+      560: LogicStartClanWarCommand,
       600: LogicPlaceAttackerCommand,
       603: LogicEndCombatCommand,
       604: LogicCastSpellCommand,

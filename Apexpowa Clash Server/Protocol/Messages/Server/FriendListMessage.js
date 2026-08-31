@@ -9,9 +9,8 @@ class FriendListMessage extends PiranhaMessage {
   }
 
   async encode () {
-    this.writeInt(0)
-
-    this.writeInt(1)
+    this.writeInt(0) // 0 = Invited | 1 = Facebook (?) | 2 = Gamecenter (?)
+    this.writeInt(1) // Count
     {
       // FriendEntry::decode
       {

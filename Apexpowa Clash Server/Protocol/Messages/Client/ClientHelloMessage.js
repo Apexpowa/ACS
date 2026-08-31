@@ -21,7 +21,7 @@ class ClientHelloMessage extends PiranhaMessage {
     this.data.Minor = this.readVInt()
     this.data.Build = this.readVInt()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process () {

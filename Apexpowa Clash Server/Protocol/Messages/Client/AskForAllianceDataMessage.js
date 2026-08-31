@@ -14,7 +14,7 @@ class AskForAllianceDataMessage extends PiranhaMessage {
 
     this.data.AllianceId = this.readLong()
 
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   async process () {

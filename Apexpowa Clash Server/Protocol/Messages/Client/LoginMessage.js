@@ -5,8 +5,9 @@ const OwnHomeDataMessage = require('../Server/OwnHomeDataMessage')
 const AvatarStreamMessage = require('../Server/AvatarStreamMessage')
 const AllianceStreamMessage = require('../Server/AllianceStreamMessage')
 const AllianceFullEntryMessage = require('../Server/AllianceFullEntryMessage')
-const WarMapMessage = require('../Server/WarMapMessage')
+const AllianceWarMapDataMessage = require('../Server/AllianceWarMapDataMessage')
 const AllianceAllEntryMessage = require('../Server/AllianceAllEntryMessage')
+const FriendListMessage = require('../Server/FriendListMessage')
 
 const GlobalChatLineMessage = require('../Server/GlobalChatLineMessage')
 
@@ -51,12 +52,11 @@ class LoginMessage extends PiranhaMessage {
       this.client.player = player
       await new LoginOkMessage(this.client).send()
       await new OwnHomeDataMessage(this.client).send()
-
       if (this.client.player.inClan === 1) {
         await new AllianceStreamMessage(this.client).send()
 
         //await new AllianceFullEntryMessage(this.client).send()
-        //await new WarMapMessage(this.client).send()
+        //await new AllianceWarMapDataMessage(this.client).send()
         //await new AllianceAllEntryMessage(this.client).send()
       }
     })

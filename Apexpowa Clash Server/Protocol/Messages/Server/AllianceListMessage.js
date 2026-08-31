@@ -44,7 +44,7 @@ class AllianceListMessage extends PiranhaMessage {
       this.writeInt(0) // WonWars
       this.writeInt(0) // LostWars
       this.writeInt(0) // DrawWars
-      this.writeInt(0x001E8481) // 
+      this.writeInt(2000001)
       this.writeInt(0) // WarFrequency
       this.writeInt(clan.location || 0) // AllianceOrigin
       this.writeInt(0) // AllianceExperience

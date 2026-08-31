@@ -1,6 +1,8 @@
+const LogicBase = require('./LogicBase')
+
 class ClientAvatar {
   async encode (self, player) {
-    self.writeInt(0) // 6.253
+    new LogicBase().encode(self)
 
     self.writeLong(player.highID, player.lowID) // HighID, LowID
     self.writeLong(player.highID, player.lowID) // HighID, LowID
@@ -10,7 +12,7 @@ class ClientAvatar {
       self.writeLong(player.clan.ClanHighID, player.clan.ClanLowID) // HighID, LowID
       self.writeString('Clashers') // AllianceName
       self.writeInt(13000000) // AllianceBadge
-      self.writeInt(2) // AllianceRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
+      self.writeInt(player.clan.ClanRole) // AllianceRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
       
       self.writeByte(0) // 6.253
     }

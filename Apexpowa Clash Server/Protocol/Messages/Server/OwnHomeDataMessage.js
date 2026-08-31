@@ -12,11 +12,9 @@ class OwnHomeDataMessage extends PiranhaMessage {
 
   async encode () {
     this.writeInt(0) // SecondsSinceLastSave
-    
-    const home = new ClientHome()
-    home.encode(this, this.client.player)
-    const avatar = new ClientAvatar()
-    avatar.encode(this, this.client.player)
+    new ClientHome().encode(this, this.client.player, 0)
+    new ClientAvatar().encode(this, this.client.player)
+    this.writeInt(0)
   }
 }
 

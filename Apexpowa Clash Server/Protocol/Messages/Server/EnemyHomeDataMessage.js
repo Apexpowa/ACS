@@ -16,14 +16,11 @@ class EnemyHomeDataMessage extends PiranhaMessage {
 
     // Someone
     {
-      const home = new ClientHome()
-      const avatar = new ClientAvatar()
-      home.encode(this, this.enemy)
-      avatar.encode(this, this.enemy)
+      new ClientHome().encode(this, this.enemy, 0)
+      new ClientAvatar().encode(this, this.enemy)
     }
 
-    const avatar = new ClientAvatar()
-    avatar.encode(this, this.client.player)
+    new ClientAvatar().encode(this, this.client.player)
 
     this.writeInt(3)
     this.writeByte(0) // NpcID

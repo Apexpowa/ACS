@@ -24,7 +24,7 @@ class AllianceDataMessage extends PiranhaMessage {
     const memberCount = members.length || 0
     const location = clan ? clan.location : 0
 
-    //if (!clan) return // if the clan doesnt exist then just return
+    if (!clan) return // if the clan doesnt exist then just return
 
     // AllianceFullEntry
     {
@@ -68,10 +68,10 @@ class AllianceDataMessage extends PiranhaMessage {
           this.writeInt(0) // DonationsReceived
           this.writeInt(1) // Order
           this.writeInt(1) // PreviousOrder
-          this.writeByte(0) // IsNewMember
+          this.writeBoolean(false) // IsNewMember
           this.writeInt(0) // WarCooldown
           this.writeInt(1) // WarOptInStatus
-          this.writeByte(1) // HasHomeID
+          this.writeBoolean(true) // HasHomeID
           this.writeLong(member.highID, member.lowID) // HighID, LowID
         }
       })
