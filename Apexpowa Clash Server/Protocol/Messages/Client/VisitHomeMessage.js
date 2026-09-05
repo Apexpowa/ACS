@@ -12,6 +12,7 @@ class VisitHomeMessage extends PiranhaMessage {
   async decode () {
     this.data = {}
 
+    this.data.HighID = this.readInt()
     this.data.LowID = this.readInt()
 
     //console.log(this.data)
