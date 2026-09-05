@@ -15,7 +15,7 @@ class LogicEndCombatCommand {
 
     self.client.player.markModified('trophies')
     self.client.player.markModified('league')
-    self.client.player.save()
+    await self.client.player.save()
   }
 }
 

@@ -23,6 +23,49 @@ class LogicStartUnlockingBuildingCommand {
       x: this.data.PositionX,
       y: this.data.PositionY
     }
+    if (this.data.BuildingID === 1000000) {
+      building.units = []
+      building.storage_type = 0
+    }
+    else if (this.data.BuildingID === 1000002) {
+      building.res_time = 179979
+    }
+    else if (this.data.BuildingID === 1000004) {
+      building.res_time = 179979
+    }
+    else if (this.data.BuildingID === 1000006) { // Barracks
+      building.unit_prod = {}
+      building.unit_prod.unit_type = 0
+    }
+    else if (this.data.BuildingID === 1000007) { // Laboratory
+      building.res_time = 179979
+    }
+    else if (this.data.BuildingID === 1000009) {
+      building.ammo = 750
+    }
+    else if (this.data.BuildingID === 1000020) { // Spell Factory
+      building.units = []
+      building.storage_type = 1
+      building.unit_prod = {}
+      building.unit_prod.unit_type = 1
+    }
+    else if (this.data.BuildingID === 1000021) { // X-Bow
+      building.attack_mode = false
+      building.ammo = 1500
+    }
+    else if (this.data.BuildingID === 1000023) {
+      building.res_time = 57579
+    }
+    else if (this.data.BuildingID === 1000024) {
+      building.res_time = 57579
+    }
+    else if (this.data.BuildingID === 1000026) {
+      building.unit_prod = {}
+      building.unit_prod.unit_type = 0
+    }
+    else if (this.data.BuildingID === 1000027) {
+      building.ammo = 750
+    }
     village.buildings.push(building)
 
     if (this.data.BuildingID === 1000022) {
@@ -40,7 +83,7 @@ class LogicStartUnlockingBuildingCommand {
 
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
-    self.client.player.save()
+    await self.client.player.save()
   }
 }
 

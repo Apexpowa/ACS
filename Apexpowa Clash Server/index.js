@@ -11,6 +11,47 @@ const PORT = config.Server.Port
 
 const Crypto = require("./Crypto")
 
+async function processPackets (client) {
+  while (client.receiveBuffer.length >= 7) {
+    const payloadLength = client.receiveBuffer.readUIntBE(2, 3)
+    const packetLength = 7 + payloadLength
+
+    if (client.receiveBuffer.length < packetLength) return
+
+    const packet = client.receiveBuffer.subarray(0, packetLength)
+    client.receiveBuffer = client.receiveBuffer.subarray(packetLength)
+
+    const message = {
+      id: packet.readUInt16BE(0),
+      len: payloadLength,
+      version: packet.readUInt16BE(5),
+      payload: packet.subarray(7),
+      client,
+    }
+
+    message.payload = client.crypto.decrypt(message.payload)
+
+    if (client.packets.indexOf(String(message.id)) !== -1) {
+      try {
+        const messagePacket = new (Messages.handle(message.id))(message.payload, client)
+
+        if (config.Server.Debug) {
+          client.log(`Gotcha ${message.id} (${messagePacket.constructor.name}) packet! `)
+        }
+
+        client.processQueue = client.processQueue
+          .then(() => messagePacket.decode())
+          .then(() => messagePacket.process())
+          .catch(error => console.log(error))
+      } catch (e) {
+        console.log(e)
+      }
+    } else if (message.id > 10099) {
+      client.log(`Gotcha undefined ${message.id} packet!`)
+    }
+  }
+}
+
 let mongooseInstance = require('./Database/mongoose')
 mongooseInstance = new mongooseInstance()
 
@@ -33,38 +74,16 @@ server.on('connection', async (client) => {
   client.log('A wild connection appeared!')
   client.crypto = new Crypto()
   client.mongoose = mongooseInstance
-  
-  const packets = Messages.getPackets()
+  client.packets = Messages.getPackets()
+  client.receiveBuffer = Buffer.alloc(0)
+  client.packetQueue = Promise.resolve()
+  client.processQueue = Promise.resolve()
 
-  client.on('data', async (packet) => {
-    const message = {
-      id: packet.readUInt16BE(0),
-      len: packet.readUIntBE(2, 3),
-      version: packet.readUInt16BE(5),
-      payload: packet.slice(7, this.len),
-      client,
-    }
-    
-    message.payload = await client.crypto.decrypt(message.payload)
-
-    if (packets.indexOf(String(message.id)) !== -1) {
-      try {
-        const packet = new (Messages.handle(message.id))(message.payload, client)
-
-        if (config.Server.Debug) {
-          client.log(`Gotcha ${message.id} (${packet.constructor.name}) packet! `)
-        }
-
-        await packet.decode()
-        await packet.process()
-      } catch (e) {
-        console.log(e)
-      }
-    } else {
-      if (message.id > 10099) {
-        client.log(`Gotcha undefined ${message.id} packet!`)
-      }
-    }
+  client.on('data', (data) => {
+    client.receiveBuffer = Buffer.concat([client.receiveBuffer, data])
+    client.packetQueue = client.packetQueue
+      .then(() => processPackets(client))
+      .catch(error => console.log(error))
   })
 
   client.on('end', async () => {

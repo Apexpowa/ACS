@@ -42,13 +42,12 @@ class EndClientTurnMessage extends PiranhaMessage {
     this.data.Tick = this.readInt()
     this.data.Checksum = this.readInt()
     this.data.Count = this.readInt()
-    this.data.CommandID = this.readInt()
 
     //console.log(this.data)
   }
 
   async process () {
-    var Commands = {
+    const Commands = {
       500: LogicStartUnlockingBuildingCommand,
       501: LogicMoveBuildingCommand,
       502: LogicUpgradeBuildingCommand,
@@ -77,20 +76,22 @@ class EndClientTurnMessage extends PiranhaMessage {
       701: LogicCommandFailed,
     }
 
-    if (this.data.CommandID === 0) return
+    for (let i = 0; i < this.data.Count; i++) {
+      const commandID = this.readInt()
+      if (commandID === 0) continue
 
-    if (Commands[this.data.CommandID]) {
-      var command = new Commands[this.data.CommandID](this.client)
+      if (Commands[commandID]) {
+        const command = new Commands[commandID](this.client)
 
-      if (config.Server.Debug) {
-        this.client.log(`Gotcha ${this.data.CommandID} (${command.constructor.name}) command! `)
+        if (config.Server.Debug) {
+          this.client.log(`Gotcha ${commandID} (${command.constructor.name}) command! `)
+        }
+
+        await command.decode(this)
+        await command.process(this)
+      } else {
+        this.client.log(`Gotcha undefined ${commandID} command!`)
       }
-
-      await command.decode(this)
-      await command.process(this)
-    }
-    else {
-      this.client.log(`Gotcha undefined ${this.data.CommandID} command!`)
     }
   }
 }

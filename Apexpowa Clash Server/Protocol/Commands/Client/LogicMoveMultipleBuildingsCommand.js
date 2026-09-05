@@ -49,7 +49,7 @@ class LogicMoveMultipleBuildingsCommand {
 
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
-    self.client.player.save()
+    await self.client.player.save()
   }
 }
 

@@ -45,7 +45,7 @@ class LogicMoveBuildingCommand {
     if (moved) {
       self.client.player.village = JSON.stringify(village)
       self.client.player.markModified('village')
-      self.client.player.save()
+      await self.client.player.save()
     } else {
       console.log(id, ' not found.')
     }
