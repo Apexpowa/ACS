@@ -23,8 +23,6 @@ class ClientAvatar {
       self.writeString(clan ? String(clan.name || '') : '') // AllianceName
       self.writeInt(clan.badge) // AllianceBadge
       self.writeInt(player.clan.ClanRole) // AllianceRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
-      
-      self.writeByte(0) // 6.253
     }
 
     self.writeInt(player.league) // League
