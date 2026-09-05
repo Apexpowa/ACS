@@ -9,9 +9,19 @@ class ClientAvatar {
     
     self.writeByte(player.inClan) // IsInAlliance
     if (player.inClan === 1) {
+      let clan = null
+      if (self.client && self.client.mongoose && typeof self.client.mongoose.getClanByID === 'function') {
+        try {
+          clan = await self.client.mongoose.getClanByID(self.client.player.clan.ClanHighID, self.client.player.clan.ClanLowID)
+        } catch (e) {
+          console.error(e)
+          clan = null
+        }
+      }
+      
       self.writeLong(player.clan.ClanHighID, player.clan.ClanLowID) // HighID, LowID
-      self.writeString('Clashers') // AllianceName
-      self.writeInt(13000000) // AllianceBadge
+      self.writeString(clan ? String(clan.name || '') : '') // AllianceName
+      self.writeInt(clan.badge) // AllianceBadge
       self.writeInt(player.clan.ClanRole) // AllianceRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
       
       self.writeByte(0) // 6.253

@@ -12,7 +12,7 @@ class AvatarProfileMessage extends PiranhaMessage {
 
   async encode () {
     const avatar = new ClientAvatar()
-    avatar.encode(this, this.player)
+    await avatar.encode(this, this.player)
 
     this.writeInt(0) // Donations
     this.writeInt(0) // DonationsReceived

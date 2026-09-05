@@ -14,10 +14,10 @@ class NpcDataMessage extends PiranhaMessage {
   async encode () {
     this.writeInt(0)
     new ClientHome().encode(this, this.client.player, 1, this.levelID)
-    new ClientAvatar().encode(this, this.client.player)
+    await new ClientAvatar().encode(this, this.client.player)
     this.writeBoolean(true)
     {
-      new ClientAvatar().encode(this, this.client.player)
+      await new ClientAvatar().encode(this, this.client.player)
     }
   }
 }

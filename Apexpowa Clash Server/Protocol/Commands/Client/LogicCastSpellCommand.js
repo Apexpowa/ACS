@@ -14,7 +14,7 @@ class LogicCastSpellCommand {
     const player = self.client.player
     if (!player.spells) player.spells = []
 
-    const spellIndex = player.spells.findIndex(u => u.spellID === this.data.SpellID)
+    const spellIndex = player.spells.findIndex(u => u.unitID === this.data.SpellID)
     if (spellIndex !== -1) {
       const spell = player.spells[spellIndex]
       spell.count -= 1

@@ -22,8 +22,8 @@ class LeaveAllianceMessage extends PiranhaMessage {
     }
 
     try {
-      await db.leaveClan(player)
       await new LeaveAllianceOkMessage(this.client).send()
+      await db.leaveClan(player)
     } catch (e) {
       console.error(e)
       await new OutOfSyncMessage(this.client).send()
