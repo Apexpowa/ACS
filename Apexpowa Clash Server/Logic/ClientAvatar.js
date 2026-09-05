@@ -13,8 +13,6 @@ class ClientAvatar {
       self.writeString('Clashers') // AllianceName
       self.writeInt(13000000) // AllianceBadge
       self.writeInt(player.clan.ClanRole) // AllianceRole (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
-      
-      self.writeByte(0) // 6.253
     }
 
     self.writeInt(player.league) // League
@@ -28,11 +26,6 @@ class ClientAvatar {
     })
     self.writeInt(10) // AllianceCastleTotalCapacity
     self.writeInt(0) // AllianceCastleUsedCapacity
-    village.buildings.forEach(b => {
-      if (b.data === 1000001) {
-        self.writeInt(b.lvl) // TownhallLevel
-      }
-    })
     self.writeString(player.name) // Name
     self.writeString(player.facebookID) // FacebookID
     self.writeInt(player.level) // Level
@@ -42,27 +35,20 @@ class ClientAvatar {
     self.writeInt(player.attackRating) // AttackRating
     self.writeInt(player.attackKFactor) // AttackKFactor
     self.writeInt(player.trophies) // Score
-    self.writeInt(player.attackWinCount) // AttackWinCount
-    self.writeInt(player.attackLoseCount) // AttackLoseCount
-    self.writeInt(player.defendWinCount) // DefendWinCount
-    self.writeInt(player.defendLoseCount) // DefendLoseCount
-    self.writeInt(player.allianceCastleGold) // AllianceCastleGold
-    self.writeInt(player.allianceCastleMana) // AllianceCastleMana
-    self.writeInt(player.allianceCastleDarkMana) // AllianceCastleDarkMana
 
     self.writeBoolean(player.nameChangesCount > 1 ? 1 : 0) // nameChangesCount
     self.writeInt(player.cumulativePurchasedDiamonds) // CumulativePurchasedDiamonds
 
-    // Arrays
-    self.writeInt(0) // array 1, resource cap data
-    self.writeInt(3) // //array 2, resource data
+    // LogicDataSlotArrays
+    self.writeInt(0)
+    self.writeInt(2) // ResourceSlotData
     {
-      self.writeInt(3000001) // Gold ID
-      self.writeInt(player.gold) // Gold Count
-      self.writeInt(3000002) // Elixir ID
-      self.writeInt(player.mana) // Elixir Count
-      self.writeInt(3000003) // Dark Elixir ID
-      self.writeInt(player.darkMana) // Dark Elixir Count
+      // Gold
+      self.writeInt(3000001)
+      self.writeInt(1000000000)
+      // Elixir
+      self.writeInt(3000002)
+      self.writeInt(1000000000)
     }
     self.writeInt(player.army ? player.army.length : 0) //array 3, unit slot data
     {
@@ -84,81 +70,6 @@ class ClientAvatar {
     }
     self.writeInt(0) //array 5, unit upgrade slot
     self.writeInt(0) //array 6, spell upgrade slot
-    self.writeInt(player.heroes) //array 7, hero upgrade slot
-    {
-      if (player.heroes === 1) {
-        village.buildings.forEach(b => {
-          if (b.data === 1000022) { // BK
-            self.writeInt(28000000) // ID
-            self.writeInt(b.lvl) // Level
-          }
-        })
-      }
-      else if (player.heroes === 2) {
-        village.buildings.forEach(b => {
-          if (b.data === 1000022) { // BK
-            self.writeInt(28000000) // ID
-            self.writeInt(b.lvl) // Level
-          }
-        })
-        village.buildings.forEach(b => {
-          if (b.data === 1000025) { // Q
-            self.writeInt(28000001) // ID
-            self.writeInt(b.lvl) // Level
-          }
-        })
-      }
-    }
-    self.writeInt(player.heroes) //array 8, hero health slot
-    {
-      if (player.heroes === 1) {
-        village.buildings.forEach(b => {
-          if (b.data === 1000022) { // BK
-            self.writeInt(28000000) // ID
-            self.writeInt(0)
-          }
-        })
-      }
-      else if (player.heroes === 2) {
-        village.buildings.forEach(b => {
-          if (b.data === 1000022) { // BK
-            self.writeInt(28000000) // ID
-            self.writeInt(0)
-          }
-        })
-        village.buildings.forEach(b => {
-          if (b.data === 1000025) { // AQ
-            self.writeInt(28000001) // ID
-            self.writeInt(0)
-          }
-        })
-      }
-    }
-    self.writeInt(player.heroes) //array 9, hero state slot
-    {
-      if (player.heroes === 1) {
-        village.buildings.forEach(b => {
-          if (b.data === 1000022) { // BK
-            self.writeInt(28000000) // ID
-            self.writeInt(3) // 2 = Sleep, 3 = Guard
-          }
-        })
-      }
-      else if (player.heroes === 2) {
-        village.buildings.forEach(b => {
-          if (b.data === 1000022) { // BK
-            self.writeInt(28000000) // ID
-            self.writeInt(3) // 2 = Sleep, 3 = Guard
-          }
-        })
-        village.buildings.forEach(b => {
-          if (b.data === 1000025) { // AQ
-            self.writeInt(28000001) // ID
-            self.writeInt(3) // 2 = Sleep, 3 = Guard
-          }
-        })
-      }
-    }
     self.writeInt(0) //array 10, alliance unit data
     if (player.tutorialSteps != 35) {
       player.tutorialSteps = 10

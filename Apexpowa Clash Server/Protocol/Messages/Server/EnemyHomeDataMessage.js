@@ -23,7 +23,7 @@ class EnemyHomeDataMessage extends PiranhaMessage {
     new ClientAvatar().encode(this, this.client.player)
 
     this.writeInt(3)
-    this.writeByte(0) // NpcID
+    this.writeInt(0)
   }
 }
 

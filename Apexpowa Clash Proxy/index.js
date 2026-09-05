@@ -1,7 +1,5 @@
 console.clear()
 
-const figlet = require('figlet')
-
 const net = require('net')
 const { execSync } = require('child_process')
 const os = require('os')
