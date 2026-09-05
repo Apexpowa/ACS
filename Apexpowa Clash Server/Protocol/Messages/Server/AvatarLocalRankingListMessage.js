@@ -37,11 +37,23 @@ class AvatarLocalRankingListMessage extends PiranhaMessage {
         this.writeLong(player.highID, player.lowID) // Home Id
 
         // Alliance
-        {
-          this.writeBoolean(false)
-          /*this.writeLong(0,1) // HighID, LowID
-          this.writeString('Clashers') // Name
-          this.writeInt(13000000) // Badge*/
+        if (player.inClan) {
+          const clanKey = `${player.clan.ClanHighID}:${player.clan.ClanLowID}`
+          let clan = clanCache[clanKey]
+          if (clan === undefined) {
+              clan = await db.getClanByID(player.clan.ClanHighID, player.clan.ClanLowID)
+              clanCache[clanKey] = clan || null
+          }
+          if (clan) {
+              this.writeBoolean(true)
+              this.writeLong(clan.highID, clan.lowID)
+              this.writeString(clan.name)
+              this.writeInt(clan.badge)
+          } else {
+              this.writeBoolean(false)
+          }
+        } else {
+            this.writeBoolean(false)
         }
       }
     }
