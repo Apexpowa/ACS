@@ -17,10 +17,10 @@ class EnemyHomeDataMessage extends PiranhaMessage {
     // Someone
     {
       new ClientHome().encode(this, this.enemy, 0)
-      new ClientAvatar().encode(this, this.enemy)
+      await new ClientAvatar().encode(this, this.enemy)
     }
 
-    new ClientAvatar().encode(this, this.client.player)
+    await new ClientAvatar().encode(this, this.client.player)
 
     this.writeInt(3)
     this.writeInt(0)

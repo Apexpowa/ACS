@@ -17,8 +17,8 @@ class NpcDataMessage extends PiranhaMessage {
   async encode () {
     this.writeInt(0) // SecondsSinceLastSave
     this.writeString(JSON.stringify(goblinHome)) // LevelJSON
-    new ClientAvatar().encode(this, this.client.player)
-    new LogicNpcAvatar().encode(this, this.levelID)
+    await new ClientAvatar().encode(this, this.client.player)
+    await new LogicNpcAvatar().encode(this, this.levelID)
   }
 }
 
