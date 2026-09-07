@@ -128,10 +128,6 @@ const playersSchema = new Schema({
         type: Number,
         default: 0
     },
-    heroes: {
-        type: Number,
-        default: 0
-    },
     inClan: {
         type: Number,
         default: 0

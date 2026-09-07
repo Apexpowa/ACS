@@ -21,21 +21,12 @@ class AllianceRankingListMessage extends PiranhaMessage {
       this.writeString(clan.name) // Name
       this.writeInt(i + 1)
       this.writeInt(clan.trophies || 0) // Score
-      this.writeInt(200)
 
       // AllianceRankingEntry
       {
         this.writeInt(clan.badge) // Badge
-        this.writeInt(clan.members?.length) // MemberCount
       }
     }
-
-    this.writeInt(604800) // Tournament Seconds left - 7 Days -> 604800
-
-    this.writeInt(3) // Reward Count
-    this.writeInt(10000) // #1 Reward
-    this.writeInt(5000) // #2 Reward
-    this.writeInt(3000) // #3 Reward
   }
 }
 

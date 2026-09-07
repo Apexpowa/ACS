@@ -15,7 +15,7 @@ class VisitedHomeDataMessage extends PiranhaMessage {
     this.writeInt(0)
     new ClientHome().encode(this, this.player, 0)
     await new ClientAvatar().encode(this, this.player)
-    this.writeByte(1)
+    this.writeBoolean(true)
     await new ClientAvatar().encode(this, this.client.player)
   }
 }

@@ -68,19 +68,6 @@ class LogicStartUnlockingBuildingCommand {
     }
     village.buildings.push(building)
 
-    if (this.data.BuildingID === 1000022) {
-      if (self.client.player.heroes === 0) {
-        self.client.player.heroes = 1
-        self.client.player.markModified('heroes')
-      }
-    }
-    else if (this.data.BuildingID === 1000025) {
-      if (self.client.player.heroes === 1) {
-        self.client.player.heroes = 2
-        self.client.player.markModified('heroes')
-      }
-    }
-
     self.client.player.village = JSON.stringify(village)
     self.client.player.markModified('village')
     await self.client.player.save()

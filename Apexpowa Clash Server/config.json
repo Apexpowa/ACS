@@ -5,10 +5,7 @@
         "Debug": true,
         "StreamerMode": true,
         "Versions": [
-            6.56,
-            6.108,
-            6.186,
-            6.253
+            "1.70"
         ]
     },
     "Database": {

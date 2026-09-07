@@ -19,19 +19,19 @@ class AllianceStreamMessage extends PiranhaMessage {
     for (const message of messages) {
       const ageSeconds = Math.floor((Date.now() - new Date(message.timestamp).getTime()) / 1000)
       this.writeInt(2) // StreamEntryType
-      this.writeLong(message.id || 0) // StreamEntryId
-      this.writeLong(message.senderHighID, message.senderLowID) // SenderAvatarId
-      this.writeLong(message.senderHighID, message.senderLowID) // HomeId
-      this.writeString(message.senderName) // SenderName
-      this.writeInt(message.senderLevel || 1) // SenderLevel
-      this.writeInt(message.senderLeague || 0) // SenderLeagueType
-      this.writeInt(message.senderRole || 1) // SenderRole
-      this.writeInt(ageSeconds) // AgeSeconds
-      this.writeByte(0) // IsRemoved
+      this.writeLong(message.id || 0) // StreamEntryId - from database
+      //this.writeLong(message.senderHighID, message.senderLowID) // SenderAvatarId
+      //this.writeLong(message.senderHighID, message.senderLowID) // HomeId
+      this.writeString(null) // FacebookID
+      this.writeString(message.senderName ?? '') // SenderName
+      this.writeInt(message.senderLevel ?? 1) // SenderLevel
+      this.writeInt(message.senderRole ?? 1) // SenderRole
+      this.writeInt(ageSeconds ?? 0) // AgeSeconds
+      this.writeBoolean(message.isRemoved ?? false) // IsRemoved
 
 
       
-      this.writeString(message.message) // Message
+      this.writeString(message.message ?? '') // Message
     }
   }
 }

@@ -46,8 +46,10 @@ class ChatToAllianceStreamMessage extends PiranhaMessage {
         senderLowID: player.lowID,
         senderName: player.name,
         senderRole: player.clan.ClanRole,
-        message: this.data.Message,
-        timestamp: new Date()
+        senderLevel: player.level,
+        isRemoved: false,
+        timestamp: new Date(),
+        message: this.data.Message
       }
       clan.messages.push(chatMessage)
       clan.markModified('messages')

@@ -36,26 +36,9 @@ class AllianceDataMessage extends PiranhaMessage {
         this.writeInt(clanType) // Type
         this.writeInt(memberCount) // MemberCount
         this.writeInt(clanScore) // Score
-        this.writeInt(clanReqScore) // RequiredScore
-        if (this.client.playerData.Major >= 6 && this.client.playerData.Minor >= 0 && this.client.playerData.Build >= 253) {
-          this.writeInt(0) // WonWars
-          this.writeInt(0) // LostWars
-          this.writeInt(0) // DrawWars
-          this.writeInt(2000001)
-          this.writeInt(0) // WarFrequency
-          this.writeInt(location) // AllianceOrigin
-          this.writeInt(0) // AllianceExperience
-          this.writeInt(1) // AllianceLevel
-        }
       }
 
       this.writeString(clanDesc) // Description
-      if (this.client.playerData.Major >= 6 && this.client.playerData.Minor >= 0 && this.client.playerData.Build >= 253) {
-        this.writeInt(0x04)
-        this.writeByte(1)
-        this.writeInt(0x03)
-        this.writeInt(0x0008A5DF)
-      }
 
       this.writeInt(memberCount) // MemberCount
       const allianceMembers = [...members].sort((a, b) => (b.trophies || 0) - (a.trophies || 0))
@@ -63,20 +46,11 @@ class AllianceDataMessage extends PiranhaMessage {
         // AllianceMemberEntry
         {
           this.writeLong(member.highID, member.lowID) // HighID, LowID
+          this.writeString(null) // FacebookID
           this.writeString(member.name) // Name
           this.writeInt(member.role) // Role (0-1 = Member, 2 = Leader, 3 = Elder, 4 = Co-Leader)
           this.writeInt(member.level) // Level
-          this.writeInt(member.league) // League
           this.writeInt(member.trophies) // Score
-          this.writeInt(0) // Donations
-          this.writeInt(0) // DonationsReceived
-          this.writeInt(1) // Order
-          this.writeInt(1) // PreviousOrder
-          this.writeBoolean(false) // IsNewMember
-          if (this.client.playerData.Major >= 6 && this.client.playerData.Minor >= 0 && this.client.playerData.Build >= 253) {
-            this.writeInt(0) // WarCooldown
-            this.writeInt(1) // WarOptInStatus
-          }
           this.writeBoolean(true) // HasHomeID
           this.writeLong(member.highID, member.lowID) // HighID, LowID
         }

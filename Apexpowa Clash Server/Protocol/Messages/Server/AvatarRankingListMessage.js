@@ -22,18 +22,10 @@ class AvatarRankingListMessage extends PiranhaMessage {
       this.writeString(player.name) // Name
       this.writeInt(i + 1)
       this.writeInt(player.trophies) // Score
-      this.writeInt(200)
 
       // AvatarRankingEntry
       {
         this.writeInt(player.level) // Level
-        this.writeInt(player.attackWinCount) // AttackWinCount
-        this.writeInt(player.attackLoseCount) // AttackLoseCount
-        this.writeInt(player.defendWinCount) // DefenseWinCount
-        this.writeInt(player.defendLoseCount) // DefenseLoseCount
-        this.writeInt(player.league) // LeagueType
-
-        this.writeString('US') // Country
         this.writeLong(player.highID, player.lowID) // Home Id
 
         // Alliance
